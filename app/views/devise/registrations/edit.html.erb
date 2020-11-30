@@ -1,0 +1,79 @@
+<div id = "Home">
+  <%= bootstrap_devise_error_messages! %>
+  <div id = "EditContent">
+    <div id = "EditContainer">
+      <h1>Edit</h1>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+        <%= f.label :image, class: "image-form" do %>
+          <div class = "edit-img">
+            <% if current_user.image.attached? %>
+              <%= image_tag current_user.image, id: "image" %>
+            <% else %>
+              <%= image_tag "no_image.png", id: "image" %>
+            <% end %>
+          </div>
+        <% end %>
+        <%= f.file_field :image, class: "image-file" %>
+
+        <div class = "form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, autofoucus: true, class: "form-control", placeholder: "10文字以内" %>
+        </div>
+
+        <div class = "form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+        </div>
+
+        <div class = "form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "new_password", class: "form-control", placeholder: "6文字〜128文字" %>
+        </div>
+
+        <div class = "form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+        </div>
+
+        <div class = "form-group">
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password, autocomplete: "current_password", class: "form-control" %> 
+        </div>
+
+        <div class = "form-group btn-group">
+          <%= f.submit "OK!", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <div class = "form-link">
+        <%= link_to "アカウント削除", registration_path(resource_name), class: "btn btn-primary", data: { confirm: t(".are_you_sure") }, method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var img = document.getElementById("user_image");
+  var preview_image = document.getElementById("image");
+  var current_user_image = preview_image.src;
+
+  img.addEventListener("change", function(evt){
+    var file = evt.target.files;
+    var num = file.length;
+    if (num == 0){
+      preview_image.src = current_user_image;
+    } else {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(file[0]);
+
+      reader.onload = function(){
+        var dataUrl = reader.result;
+        preview_image.src = dataUrl;
+      }
+    }
+  });
+</script>
+
+

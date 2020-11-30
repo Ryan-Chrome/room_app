@@ -1,0 +1,15 @@
+<ul>
+    <% @room_member.each do |member| %>
+        <li>
+            <% if member.image.attached? %>
+                <%= image_tag member.image %>
+            <% else %>
+                <%= image_tag "no_image.png" %>
+            <% end %>
+            <span><%= member.name %></span>
+            <%= form_with(model: @room.entries.find_by(user_id: member.id), html: {method: :delete}, remote: true) do |s| %>
+                <%= s.submit "削除", class: "btn btn-primary" %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>

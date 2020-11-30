@@ -1,0 +1,117 @@
+<div class = "FriendContent">
+    <ul id = "FriendList">
+        <li id = "FriendCreateBtn">＋ ユーザー追加</li>
+        <% if @RequestUser.present? %>
+            <li class = "head">申請中ユーザー</li>
+            <% @RequestUser.each do |user| %>
+                <%= link_to root_path(request_user: user.public_uid), remote: true do %>
+                    <li class = "room-member">
+                        <% if user.image.attached? %>
+                            <%= image_tag user.image %>
+                        <% else %>
+                            <%= image_tag "no_image.png" %>
+                        <% end %>
+                        <%= user.name %>
+                    </li>
+                <% end %>
+            <% end %>
+        <% end %>
+        <% if @ApprovalUser.present? %>
+            <li class = "head">承認待ちユーザー</li>
+            <% @ApprovalUser.each do |user| %>
+                <%= link_to root_path(approval_user: user.public_uid), remote: true do %>
+                    <li class = "room-member">
+                        <% if user.image.attached? %>
+                            <%= image_tag user.image %>
+                        <% else %>
+                            <%= image_tag "no_image.png" %>
+                        <% end %>
+                        <%= user.name %>
+                    </li>
+                <% end %>
+            <% end %>
+        <% end %>
+        <% if @friend.present? %>
+            <li class = "head">フレンド</li>
+            <% @friend.each do |user| %>
+                <%= link_to root_path(friend_user: user.public_uid), remote: true do %>
+                    <li class = "room-member">
+                        <% if user.image.attached? %>
+                            <%= image_tag user.image %>
+                        <% else %>
+                            <%= image_tag "no_image.png" %>
+                        <% end %>
+                        <%= user.name %>
+                    </li>
+                <% end %>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
+
+<script>
+    var document_width = document.body.clientWidth;
+    var modal = document.getElementById("Modal");
+    var friend_create_btn = document.getElementById("FriendCreateBtn");
+    var friend_close_btn = document.getElementById("friend-modal-close");
+    var friend_create_inner = document.getElementById("FriendCreate");
+    var search_btn = document.getElementById("search-btn");
+    var friend_list_btn = document.getElementsByClassName("room-member");
+
+    if(document_width <= 1024){
+        friend_create_btn.onclick = function() {
+            modal.style.display = "block";
+            friend_create_inner.style.display = "block";
+        };
+        friend_close_btn.onclick = function() {
+            modal.style.display = "none";
+            friend_create_inner.style.display = "none";
+        };
+        
+        for(i=0;i<friend_list_btn.length;i++){
+            friend_list_btn[i].onclick = function() {
+                modal.style.display = "block";
+            };
+        };
+    }
+
+    if(document_width >= 1025){
+        friend_create_btn.onclick = function() {
+            modal.style.display = "block";
+            friend_create_inner.style.display = "block";
+            var tl = anime.timeline({});
+            tl.add({
+                targets: "#FriendCreate",
+                height: [0,250],
+                easing: "linear",
+                duration: 200
+            }).add({
+                targets: "#FriendSearchForm",
+                opacity: [0,1],
+                duration: 1000
+            }).add({
+                targets: "#FriendCreateHead",
+                translateY: [-1000,0],
+                translateZ: 0,
+                rotate: [0, -15],
+                easing: "spring(1, 80, 13, 0)",
+                
+            }, 100);
+        };
+        friend_close_btn.onclick = function() {
+            modal.style.display = "none";
+            friend_create_inner.style.display = "none";
+            anime({
+                targets: "#FriendSearchForm",
+                opacity: [1,0],
+            });
+        };
+        for(i=0;i<friend_list_btn.length;i++){
+            friend_list_btn[i].onclick = function() {
+                modal.style.display = "block";
+            };
+        };
+    }
+
+</script>
+

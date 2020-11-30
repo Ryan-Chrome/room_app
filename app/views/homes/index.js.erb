@@ -1,0 +1,29 @@
+$("#AddFriendContainer").html("<%= escape_javascript(render("shared/add_friend")) %>");
+
+var add_friend_container = document.getElementById("AddFriendContainer");
+document.body.addEventListener("ajax:complete", function(){
+    add_friend_container.style.display = "block";
+    friend_create_inner.style.display = "none";
+    if(document_width >= 1025){
+        anime({
+            targets: "#FriendSearchForm",
+            opacity: [1,0],
+        });
+        var tl = anime.timeline({});
+
+        tl.add({
+            targets: "#AddFriendContainer",
+            height: [0,500],
+            easing: "linear",
+            duration: 200
+        }).add({
+            targets: "#AddFriendUser",
+            opacity: [0,1],
+            duration: 1000
+        }, 300).add({
+            targets: "#AddFriendForm",
+            opacity: [0,1],
+            duration: 1000
+        }, 300);
+    }
+});

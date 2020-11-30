@@ -1,0 +1,173 @@
+<% if user_signed_in? %>
+    <div id = "sub-header" class = "phone"><%= render "shared/phone_sub_header" %></div>
+    <div id = "Container">
+        <div id = "Modal">
+            <div id = "RoomCreate">
+                <h1 id = "RoomCreateHead">New-Room</h1>
+                <span id = "room-modal-close">× close</span>
+                <div id = "RoomCreateForm">
+                    <%= form_with(model: @room, local: true) do |f| %>
+                        <%= f.label :name, "Name" %>
+                        <%= f.text_field :name, class: "form-control", placeholder: "10文字以内" %>
+
+                        <%= f.submit "OK!", class: "btn btn-primary" %>
+                    <% end %>
+                </div>
+            </div>
+            <div id = "FriendCreate">
+                <h1 id = "FriendCreateHead">New-Friend</h1>
+                <span id = "friend-modal-close">× close</span>
+                <div id = "FriendSearchForm">
+                    <%= form_with url: root_path, method: :get, remote: true do |s| %>
+                        <%= s.label :search, "ID-number", id: "new-friend-label" %>
+                        <%= s.text_field :search, class: "form-control" %>
+
+                        <%= s.submit "OK!", class: "btn btn-primary", id: "search-btn" %>
+                    <% end %>
+                </div>
+            </div>
+            <div id = "AddFriendContainer">
+                <%= render "shared/add_friend" %>
+            </div>
+        </div>
+        <div id = "LeftSideContent">
+            <%= render "shared/left_side_content" %>
+        </div>
+        <div id = "CenterContent">
+            <%= render "shared/center_content" %>
+        </div>
+        <div id = "RightSideContent">
+            <%= render "shared/right_side_content" %>
+        </div>
+    </div>
+    <script>
+        var document_width = document.body.clientWidth;
+        var modal = document.getElementById("Modal");
+        var room_create_btn = document.getElementById("RoomCreateBtn");
+        var room_close_btn = document.getElementById("room-modal-close");
+        var room_create_inner = document.getElementById("RoomCreate");
+
+        if(document_width <= 1024) {
+            var friend = document.getElementById("sub-menu-friend");
+            var main = document.getElementById("sub-menu-main");
+            var room = document.getElementById("sub-menu-room");
+
+            var left_content = document.getElementById("LeftSideContent");
+            var center_content = document.getElementById("CenterContent");
+            var right_content = document.getElementById("RightSideContent");
+
+            $("#Container").scrollLeft(document_width);
+
+            friend.onclick = function(){
+                $("#Container").scrollLeft(0);
+            }
+            main.onclick = function(){
+                $("#Container").scrollLeft(document_width);
+            }
+            room.onclick = function(){
+                $("#Container").scrollLeft(document_width * 2);
+            }
+
+            setInterval( function() {
+                var left_content_rect = left_content.getBoundingClientRect();
+                var center_content_rect = center_content.getBoundingClientRect();
+                var right_content_rect = right_content.getBoundingClientRect();
+
+                if (document_width/2 >= center_content_rect.left && center_content_rect.left >= 0 || center_content_rect.right <= document_width && center_content_rect.right > 0 ) {
+                    main.style.backgroundColor = "rgb(44, 44, 44)"
+                    friend.style.backgroundColor = "rgb(150, 54, 54)"
+                    room.style.backgroundColor = "rgb(150, 54, 54)"
+                };
+
+                if (document_width/2 >= right_content_rect.left && right_content_rect.left >= 0) {
+                    room.style.backgroundColor = "rgb(44, 44, 44)"
+                    friend.style.backgroundColor = "rgb(150, 54, 54)"
+                    main.style.backgroundColor = "rgb(150, 54, 54)"
+                };
+
+                if (document_width/2 <= left_content_rect.right && left_content_rect.right <= document_width ) {
+                    friend.style.backgroundColor = "rgb(44, 44, 44)"
+                    room.style.backgroundColor = "rgb(150, 54, 54)"
+                    main.style.backgroundColor = "rgb(150, 54, 54)"
+                };
+            });
+            room_create_btn.onclick = function(){
+                modal.style.display = "block";
+                room_create_inner.style.display = "block";
+            };
+            room_close_btn.onclick = function(){
+                modal.style.display = "none";
+                room_create_inner.style.display = "none";
+            };
+
+            anime({
+                targets: ".check-false .new-light",
+                color: "rgb(100, 230, 139)"
+            });
+
+            anime({
+                targets: ".no_check",
+                color: "rgb(100, 230, 139)"
+            });
+        };
+
+        if(document_width >= 1025){
+            room_create_btn.onclick = function(){
+                modal.style.display = "block";
+                room_create_inner.style.display = "block";
+                var tl = anime.timeline({});
+                tl.add({
+                    targets: "#RoomCreate",
+                    height: [0,250],
+                    easing: "linear",
+                    duration: 200
+                }).add({
+                    targets: "#RoomCreateForm",
+                    opacity: [0,1],
+                    duration: 1000
+                }).add({
+                    targets: "#RoomCreateHead",
+                    translateY: [-1000,0],
+                    translateZ: 0,
+                    rotate: [0, -15],
+                    easing: "spring(1, 80, 13, 0)",
+                    
+                }, 100);
+            };
+            room_close_btn.onclick = function(){
+                modal.style.display = "none";
+                room_create_inner.style.display = "none";
+                anime({
+                    targets: "#RoomCreateForm",
+                    opacity: [1,0],
+                });
+            };
+
+            anime({
+                targets: ".check-false .room-link",
+                opacity: [1,0],
+                duration: 1500,
+                direction: "alternate",
+                easing: "linear",
+                loop: true
+            });
+        };
+        
+    </script>
+<% else %>
+    <div id = "Home">
+        <div id = "Content">
+            <div id = "HomeContainer">
+                <h1>ROOM</h1>
+                <span>ROOMはチャット形式コミュニケーションツールです。</span>
+                <div id = "HomeBtnContainer">
+                    <%= link_to "New-Account", new_user_registration_path, class: "HomeNewBtn", "data-turbolinks": false %>
+                    <%= link_to "Login", new_user_session_path, class: "HomeLoginBtn", "data-turbolinks": false %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+
+

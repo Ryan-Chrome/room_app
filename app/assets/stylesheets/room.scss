@@ -1,0 +1,3578 @@
+@import "bootstrap";
+
+$black: rgb(44, 44, 44);
+$red: rgb(150, 54, 54);
+
+.container-login {
+    @extend .container-fluid;
+    max-width: 576px;
+    padding: 2rem;
+}
+
+.field_with_errors {
+    input {
+        background-color: #f8d7da;
+    }
+}
+
+@media screen and (max-width: 480px){
+
+    .alert {
+        width: 95%;
+        margin: auto;
+        margin-top: 10px;
+        padding: 5px 10px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-size: 14px;
+        button {
+            line-height: 14px;
+        }
+        h4 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 0; 
+        }
+        ul {
+            padding-left: 20px;
+            font-size: 14px;
+            list-style-type: disc;
+            font-weight: bold;
+            display: none;
+        }
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    body {
+        background-color: $red;
+    }
+
+    header {
+        background-color: $black;
+        color: white;
+        height: 45px;
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        border-bottom: 2px solid white;
+        span {
+            display: block;
+            height: 45px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            #Logo {
+                color: white;
+                font-weight: bold;
+                line-height: 45px;
+                font-size: 22px;
+            }
+        }
+        #Menu {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            span {
+                line-height: 45px;
+                a {
+                    font-size: 20px;
+                    color: white;
+                }
+            }
+        }
+        #leftMenu {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            span {
+                line-height: 45px;
+                a {
+                    font-size: 20px;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    #sub-header {
+        height: 30px;
+        margin-top: 10px;
+        width: 100vw;
+        background-color: $red;
+        ul {
+            padding: 0;
+            height: 30px;
+            margin: 0;
+            li {
+                float: left;
+                line-height: 30px;
+                font-size: 12px;
+                font-weight: bold;
+                padding: 0 20px;
+                margin: 0 10px;
+                border-radius: 10px 10px 0 0;
+                color: white;
+                &:first-child {
+                    background-color: $red;
+                    color: white;
+                }
+            }
+            #sub-menu-room {
+                position: relative;
+                .new-light {
+                    position: absolute;
+                    color: rgba(255, 255, 255, 0);
+                    right: 12px;
+                    top: -5px;
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+
+    #Main {
+        padding-top: 45px;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        position: relative;
+    }
+
+    #Home {
+        width: 100%;
+        margin: auto;
+        height: 100%;
+        position: relative;
+        .signup-notice {
+            font-size: 20px;
+            color: white;
+        }
+        #Content {
+            position: relative;
+            background-color: $black;
+            border: 2px solid white;
+            width: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 50px;
+            border-radius: 30px;
+            #HomeContainer {
+                h1 {
+                    color: white;
+                    font-size: 50px;
+                    font-weight: bold;
+                    text-align: center;
+                }
+                span {
+                    color: white;
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-top: 30px;
+                    display: none;
+                }
+                #HomeBtnContainer {
+                    text-align: center;
+                    margin: 50px auto 0 auto;
+                    width: 80%;
+                    a {
+                        color: black;
+                        background-color: white;
+                        border-radius: 10px;
+                        display: block;
+                        margin: 30px auto 0 auto;
+                        font-weight: bold;
+                        font-size: 20px;
+                        padding: 5px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        #LoginContent {
+            background-color: $black;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            border: 2px solid white;
+            padding: 10px 0;
+            border-radius: 30px;
+            #LoginContainer {
+                h1 {
+                    text-align: center;
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+                form {
+                    width: 90%;
+                    margin: auto;
+                    .form-group {
+                        label {
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-weight: 16px;
+                            height: 30px;
+                            padding: 0 5px;
+                        }
+                    }
+                    .btn-group {
+                        width: 100%;
+                        .btn {
+                            width: 100%;
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            padding: 0;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                .form-link {
+                    width: 90%;
+                    margin: auto;
+                    a {
+                        color: white;
+                        display: inline-block;
+                        width: 100%;
+                        text-align: center;
+                        font-size: 14px;
+                        margin-top: 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        #PasswordContent {
+            background-color: $black;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            border: 2px solid white;
+            padding: 10px 0;
+            border-radius: 30px;
+            #PasswordContainer {
+                h1 {
+                    text-align: center;
+                    font-size: 20px;
+                    margin-bottom: 23px;
+                    font-weight: bold;
+                }
+                form {
+                    width: 90%;
+                    margin: auto;
+                    .form-group {
+                        label {
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-weight: 16px;
+                            height: 30px;
+                            padding: 0 5px;
+                        }
+                    }
+                    .btn-group {
+                        width: 100%;
+                        .btn {
+                            width: 100%;
+                            margin-top: 10px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                            padding: 0;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                .form-link {
+                    width: 90%;
+                    margin: auto;
+                    a {
+                        color: white;
+                        display: inline-block;
+                        width: 100%;
+                        text-align: center;
+                        margin-top: 10px;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        #SignupContent {
+            background-color: $black;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            border: 2px solid white;
+            padding: 10px 0;
+            border-radius: 30px;
+            #SignupContainer {
+                h1 {
+                    text-align: center;
+                    margin-bottom: 20px;
+                    font-size: 25px;
+                    font-weight: bold;
+                }
+                form {
+                    width: 90%;
+                    margin: auto;
+                    .form-group {
+                        label {
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-weight: 16px;
+                            height: 30px;
+                            padding: 0 5px;
+                        }
+                    }
+                    .btn-group {
+                        width: 100%;
+                        .btn {
+                            width: 100%;
+                            margin-top: 20px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            padding: 0;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                .form-link {
+                    width: 90%;
+                    margin: auto;
+                    a {
+                        color: white;
+                        display: inline-block;
+                        width: 100%;
+                        text-align: center;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        #EditContent {
+            height: 80%;
+            overflow: auto;
+            background-color: $black;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            border: 2px solid white;
+            padding: 10px 0;
+            border-radius: 30px;
+            #EditContainer {
+                h1 {
+                    padding-left: 20px;
+                    margin-bottom: 10px;
+                    font-size: 27px;
+                    font-weight: bold;
+                }
+                form {
+                    width: 90%;
+                    margin: auto;
+                    .form-group {
+                        label {
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-weight: 16px;
+                            height: 30px;
+                            padding: 0 5px;
+                        }
+                    }
+                    .image-form {
+                        display: block;
+                        text-align: center;
+                        width: 100px;
+                        margin: 0 auto 20px auto;
+                        .edit-img {
+                            #image {
+                                width: 100px;
+                                height: 100px;
+                                object-fit: cover;
+                                border-radius: 3px;
+                                border: 3px solid white;
+                                object-position: 10% 50%;
+                            }
+                        }
+                    }
+                    .image-file {
+                        display: none;
+                    }
+                    .btn-group {
+                        width: 100%;
+                        .btn {
+                            width: 100%;
+                            margin-top: 20px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            padding: 0;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                .form-link {
+                    width: 90%;
+                    margin: 0 auto 10px auto;
+                    a {
+                        width: 100%;
+                        margin: 20px auto;
+                        color: white;
+                        font-weight: bold;
+                        display: block;
+                        font-size: 14px;
+                        background-color: rgb(117, 48, 48);
+                        border-color: rgb(117, 48, 48);
+                        padding: 0;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    #Container {
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        display: flex;
+        height: calc(100% - 40px);
+        #Modal {
+            background-color: rgba(0, 0, 0, 0.836);
+            width: 100vw;
+            height: 100%;
+            z-index: 10;
+            position: fixed;
+            display: none;
+            #AddMemberContainer {
+                width: 90%;
+                height: 80%;
+                background-color: $black;
+                border: 2px solid white;
+                position: absolute;
+                top: calc(50% - 45px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                overflow: auto;
+                border-radius: 10px;
+                #add-member-close {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                }
+                #AddMemberContent {
+                    ul {
+                        width: 100%;
+                        padding: 30px 10px 10px 10px;
+                        li {
+                            width: 100%;
+                            padding: 5px 10px;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            border-bottom: 1px solid white;
+                            position: relative;
+                            form {
+                                display: inline-block;
+                                position: absolute;
+                                right: 10px;
+                                top: 50%;
+                                transform: translate(0, -50%);
+                                .btn {
+                                    font-size: 12px;
+                                    padding: 0 10px;
+                                    font-weight: bold;
+                                }
+                            }
+                            span {
+                                color: white;
+                                font-size: 12px;
+                                font-weight: bold;
+                                line-height: 50px;
+                                margin-left: 10px;
+                            }
+                            img {
+                                height: 50px;
+                                width: 50px;
+                                object-fit: cover;
+                                border: 1px solid white;
+                                border-radius: 3px;
+                                float: left;
+                            }
+                        }
+                    }
+                }
+            }
+            #RemoveMemberContainer {
+                width: 90%;
+                height: 80%;
+                background-color: $black;
+                border: 2px solid white;
+                position: absolute;
+                top: calc(50% - 45px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                overflow: auto;
+                border-radius: 10px;
+                #remove-member-close {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                }
+                #RemoveMemberContent {
+                    ul {
+                        width: 100%;
+                        padding: 30px 10px 10px 10px;
+                        li {
+                            width: 100%;
+                            padding: 5px 10px;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            border-bottom: 1px solid white;
+                            position: relative;
+                            form {
+                                display: inline-block;
+                                position: absolute;
+                                right: 10px;
+                                top: 50%;
+                                transform: translate(0, -50%);
+                                .btn {
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    padding: 0 10px;
+                                }
+                            }
+                            span {
+                                color: white;
+                                font-size: 12px;
+                                font-weight: bold;
+                                line-height: 50px;
+                                margin-left: 10px;
+                            }
+                            img {
+                                height: 50px;
+                                width: 50px;
+                                object-fit: cover;
+                                border: 1px solid white;
+                                border-radius: 3px;
+                                float: left;
+                            }
+                        }
+                    }
+                }
+            }
+            #RoomCreate {
+                display: none;
+                color: white;
+                width: 80%;
+                margin: auto;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 10px 20px;
+                h1 {
+                    margin-bottom: 20px;
+                    font-size: 18px;
+                    margin-top: 10px;
+                }
+                #room-modal-close {
+                    font-size: 16px;
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                    cursor: pointer;
+                }
+                #RoomCreateForm {
+                    form {
+                        width: 100%;
+                        margin: auto;
+                        font-size: 0;
+                        label {
+                            font-size: 14px;
+                            margin: 0;
+                            padding-left: 5px;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                            display: block;
+                        }
+                        .form-control {
+                            display: inline-block;
+                            font-size: 16px;
+                            margin-bottom: 20px;
+                            width: 77%;
+                            margin-right: 3%;
+                            padding: 0px 5px;
+                            height: 30px;
+                        }
+                        .btn {
+                            display: inline-block;
+                            width: 20%;
+                            line-height: 30px;
+                            font-size: 14px;
+                            vertical-align: top;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+            #FriendCreate {
+                display: none;
+                color: white;
+                width: 80%;
+                margin: auto;
+                position: absolute;
+                top: calc(50% - 80px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 10px 20px;
+                h1 {
+                    margin-bottom: 20px;
+                    font-size: 18px;
+                    margin-top: 10px;
+                }
+                #friend-modal-close {
+                    font-size: 16px;
+                    position: absolute;
+                    right: 15px;
+                    top: 7px;
+                    cursor: pointer;
+                }
+                #FriendSearchForm {
+                    form {
+                        width: 100%;
+                        margin: auto;
+                        font-size: 0;
+                        label {
+                            font-size: 14px;
+                            margin: 0;
+                            padding-left: 5px;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                            display: block;
+                        }
+                        .form-control {
+                            display: inline-block;
+                            font-size: 16px;
+                            margin-bottom: 20px;
+                            width: 77%;
+                            margin-right: 3%;
+                            padding: 0px 5px;
+                            height: 30px;
+                        }
+                        .btn {
+                            display: inline-block;
+                            width: 20%;
+                            line-height: 30px;
+                            font-size: 14px;
+                            padding: 0;
+                            vertical-align: top;
+                        }
+                    }
+                }
+            }
+            #AddFriendContainer {
+                display: none;
+                color: white;
+                width: 80%;
+                margin: auto;
+                position: absolute;
+                top: calc(50% - 70px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 10px 20px;
+                #AddFriendContent {
+                    #add-friend-modal-close {
+                        font-size: 16px;
+                        position: absolute;
+                        right: 20px;
+                        top: 10px;
+                        cursor: pointer;
+                    }
+                    .add-friend-not-user {
+                        display: block;
+                        margin: 130px auto 0 auto;
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+                    #add-not-friend-back-btn {
+                        display: block;
+                        margin: 20px auto 100px auto;
+                        text-align: center;
+                        font-size: 16px;
+                    }
+                    #add-friend-back-btn {
+                        font-size: 16px;
+                        position: absolute;
+                        left: 20px;
+                        top: 10px;
+                        cursor: pointer;
+                    }
+                    #AddFriendUser {
+                        text-align: center;
+                        margin-top: 60px;
+                        img {
+                            width: 100px;
+                            height: 100px;
+                            object-fit: cover;
+                            border: 2px solid white;
+                            border-radius: 5px;
+                        }
+                        span {
+                            display: block;
+                            margin-top: 10px;
+                            font-weight: bold;
+                        }
+                    }
+                    #AddFriendForm {
+                        text-align: center;
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                        span {
+                            display: block;
+                            margin-bottom: 20px;
+                        }
+                        form {
+                            display: inline-block;
+                            #add-friend-ok-btn {
+                                margin-right: 20px;
+                            }
+                            #add-friend-btn {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #LeftSideContent {
+            scroll-snap-align: start;
+            width: 100vw;
+            height: 100%;
+            background-color: $red;
+            flex: none;
+            .FriendContent {
+                height: 100%;
+                position: relative;
+                #FriendList {
+                    padding: 30px 0 0 0;
+                    position: relative;
+                    height: 100%;
+                    background-color: $black;
+                    overflow: auto;
+                    margin: 0;
+                    li {
+                        background-color: $black;
+                        color: white;
+                        font-size: 14px;
+                    }
+                    .room-member {
+                        margin: 15px 3%;
+                        border: 2px solid white;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            object-fit: cover;
+                            border-radius: 5px 0 0 5px;
+                            border-right: 2px solid white;
+                            margin-right: 15px;
+                        }
+                    }
+                    .head {
+                        font-weight: bold;
+                        padding: 0 0 5px 10px;
+                        margin: 0 3%;
+                        border-bottom: 2px solid white;
+                        display: block;
+                        clear: both;
+                    }
+                    #FriendCreateBtn {
+                        font-weight: bold;
+                        text-align: right;
+                        color: black;
+                        padding: 5px 15px 5px 15px;  
+                        margin: 15px 20px;
+                        background-color: white;
+                        border-radius: 5px;
+                        display: inline-block;
+                        cursor: pointer;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        font-size: 12px;
+                    }
+                }
+                #MemberList {
+                    padding: 30px 0 0 0;
+                    position: relative;
+                    height: 100%;
+                    background-color: $black;
+                    margin: 0;
+                    overflow: auto;
+                    .head {
+                        color: white;
+                        font-weight: bold;
+                        font-size: 14px;
+                        border-bottom: 2px solid white;
+                        display: block;
+                        padding: 0 0 5px 10px;
+                        margin: 0 3%;
+                    }
+                    #AddMemberContainerBtn {
+                        position: absolute;
+                        color: black;
+                        font-weight: bold;
+                        background-color: white;
+                        border-radius: 5px;
+                        font-size: 12px;
+                        padding: 5px 15px;
+                        right: 0;
+                        top: 0;
+                        margin: 15px 20px;
+                    }
+                    li {
+                        background-color: $black;
+                        color: white;
+                        font-size: 14px;
+                    }
+                    .room-member {
+                        margin: 15px 3%;
+                        border: 2px solid white;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            object-fit: cover;
+                            border-radius: 5px 0 0 5px;
+                            border-right: 2px solid white;
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+        }
+        #CenterContent {    
+            scroll-snap-align: start;
+            width: 100vw;
+            background-color: $red;
+            height: 100%;
+            flex: none;
+            .HomeContent {
+                background-color: $black;
+                height: 100%;
+                #InfoContainer {
+                    display: none;
+                }
+                #InnerContent {
+                    height: 100%;
+                    position: relative;
+                    #InfoRoomBottom {
+                        display: none;
+                    }
+                    #UserShow {
+                        #UserContent {
+                            position: absolute;
+                            top: calc(50% - 20px);
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            img {
+                                width: 200px;
+                                height: 200px;
+                                object-fit: cover;
+                                border: 2px solid white;
+                                border-radius: 200px;
+                                display: block;
+                            }
+                            span {
+                                display: block;
+                                color: white;
+                                text-align: center;
+                                margin-top: 10px;
+                                font-size: 20px;
+                                font-weight: bold;
+                            }
+                            a {
+                                display: block;
+                                color: white;
+                                text-align: center;
+                                margin-top: 10px;
+                                font-size: 20px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+            .RoomContent {
+                background-color: $black;
+                height: 100%;
+                padding-top: 10px;
+                #InnerContent {
+                    height: 100%;
+                    #InfoRoomBottom {
+                        a {
+                            display: none;
+                        }
+                        .right-menu {
+                            display: none;
+                        }
+                        .room-name {
+                            color: white;
+                            font-weight: bold;
+                            display: block;
+                            text-align: center;
+                            padding-top: 0;
+                            margin: 0 20px;
+                            font-size: 16px;
+                        }
+                    }
+                    #Room {
+                        background-color: $black;
+                        margin: 10px 0 0 0;
+                        height: calc(100% - 51px);
+                        #MessageContent {
+                            height: calc(100% - 45px);
+                            background-color: $red;
+                            border-radius: 0 0 10px 10px;
+                            border-top: 2px solid white;
+                            border-bottom: 2px solid white;
+                            #direct_messages {
+                                padding-top: 10px;
+                                height: 100%;
+                                overflow: auto;
+                                padding-bottom: 10px;
+                                .current_user_message {
+                                    position: relative;
+                                    text-align: right;
+                                    margin-top: 10px;
+                                    margin-bottom: 10px;
+                                    .user-content {
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        img {
+                                            height: 50px;
+                                            width: 50px;
+                                            object-fit: cover;
+                                            border: 2px solid white;
+                                            border-radius: 5px;
+                                            float: right;
+                                            margin-right: 10px;
+                                        }
+                                        .user-name {
+                                            color: white;
+                                            line-height: 50px;
+                                            margin-right: 10px;
+                                            font-weight: bold;
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    .message-content {
+                                        color: white;
+                                        border: 3px solid white;
+                                        display: inline-block;
+                                        background-color: black;
+                                        padding: 5px 10px;
+                                        max-width: 60%;
+                                        margin-right: 70px;
+                                        margin-top: 40px;
+                                        margin-bottom: 5px;
+                                        text-align: left;
+                                        font-weight: bold;
+                                        font-size: 14px;
+                                        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+                                    }
+                                    .message-time {
+                                        color: white;
+                                        font-size: 12px;
+                                        display: block;
+                                        margin-right: 70px;
+                                    }
+                                }
+                                .other_user_message {
+                                    position: relative;
+                                    margin-top: 10px;
+                                    margin-bottom: 10px;
+                                    .user-content {
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        img {
+                                            height: 50px;
+                                            width: 50px;
+                                            object-fit: cover;
+                                            border: 2px solid white;
+                                            border-radius: 5px;  
+                                            margin-left: 10px;
+                                        }
+                                        .user-name {
+                                            color: white;
+                                            line-height: 50px;
+                                            margin-left: 7px;
+                                            font-weight: bold;
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    .message-content {
+                                        color: white;
+                                        border: 3px solid white;
+                                        display: inline-block;
+                                        background-color: black;
+                                        padding: 5px 10px;
+                                        max-width: 60%;
+                                        margin-left: 70px;
+                                        margin-top: 40px;
+                                        margin-bottom: 5px;
+                                        font-weight: bold;
+                                        font-size: 14px;
+                                        box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+                                    }
+                                    .message-time {
+                                        color: white;
+                                        font-size: 12px;
+                                        display: block;
+                                        margin-left: 70px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #RightSideContent {
+            scroll-snap-align: start;
+            width: 100vw;
+            background-color: $red;
+            height: 100%;
+            flex: none;
+            .RoomContent {
+                background-color: $black;
+                height: 100%;
+                overflow: auto;
+                color: white;
+                position: relative;
+                #RoomCreateBtn {
+                    font-size: 12px;
+                    cursor: pointer;
+                    display: inline-block;
+                    background-color: white;
+                    color: black;
+                    padding: 7.5px 20px;
+                    position: absolute;
+                    right: 20px;
+                    top: 15px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                #group-list {
+                    padding-top: 30px;
+                    padding-left: 0;
+                    #room-list-head {
+                        border-bottom: 2px solid white;
+                        margin: 0 3%;
+                        font-weight: bold;
+                        padding: 0 0 2px 10px;
+                        clear: both;
+                        display: block;
+                        font-size: 16px;
+                    }
+                    .myroom {
+                        display: none;
+                    }
+                    .group {
+                        border: 2px solid white;
+                        line-height: 60px;
+                        margin: 15px 3%;
+                        border-radius: 5px;
+                        font-weight: bold; 
+                        padding-left: 20px;
+                        position: relative;
+                        .room-link {
+                            color: white;
+                        }
+                        .new-light {
+                            font-size: 20px;
+                            color: rgba(255, 255, 255, 0);
+                            position: absolute;
+                            right: 0;
+                            margin-right: 10px;
+                        }
+                        .new {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        #message-form {
+            width: 100%;
+            position: absolute;
+            bottom: 15px;
+            font-size: 0;
+            #abc-btn {
+                display: none;
+            }
+            #message-form-name {
+                display: none;
+            }
+            #chat-btn {
+                background-color: rgb(15, 84, 189);
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                width: 10%;
+                line-height: 34px;
+                display: inline-block;
+                text-align: center;
+                vertical-align: top;
+                min-height: 34px;
+                border-radius: 30px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) and (min-width: 480px){
+
+    .alert {
+        width: 95%;
+        margin: auto;
+        margin-top: 10px;
+        position: absolute;
+        padding: 5px 10px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-weight: bold;
+        h4 {
+            display: none;
+        }
+        ul {
+            padding-left: 20px;
+            font-size: 14px;
+            list-style-type: disc;
+            font-weight: bold;
+        }
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    body {
+        background-color: $red;
+    }
+
+    header {
+        background-color: $black;
+        color: white;
+        height: 50px;
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        border-bottom: 2px solid white;
+        span {
+            display: block;
+            height: 45px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            #Logo {
+                color: white;
+                font-weight: bold;
+                line-height: 45px;
+                font-size: 25px;
+            }
+        }
+        #Menu {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            span {
+                line-height: 45px;
+                a {
+                    font-size: 23px;
+                    color: white;
+                }
+            }
+        }
+        #leftMenu {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            span {
+                line-height: 50px;
+                a {
+                    font-size: 20px;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    #sub-header {
+        height: 40px;
+        margin-top: 10px;
+        width: 100vw;
+        background-color: $red;
+        ul {
+            padding: 0;
+            height: 40px;
+            margin: 0;
+            li {
+                float: left;
+                line-height: 40px;
+                font-weight: bold;
+                padding: 0 30px;
+                margin: 0 20px;
+                border-radius: 10px 10px 0 0;
+                color: white;
+                &:first-child {
+                    background-color: $red;
+                    color: white;
+                }
+            }
+            #sub-menu-room {
+                position: relative;
+                .new-light {
+                    position: absolute;
+                    color: rgba(255, 255, 255, 0);
+                    right: 20px;
+                    top: -5px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    #Main {
+        padding-top: 50px;
+        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
+        position: relative;
+    }
+
+    #Home {
+        width: 100%;
+        position: relative;
+        height: 100%; 
+        #Content {
+            width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            #HomeContainer {
+                padding: 60px 0px 60px 0px;
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 30px;
+                h1 {
+                    color: white;
+                    font-size: 60px;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                span {
+                    color: white;
+                    display: block;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-top: 30px;
+                    display: none;
+                }
+                #HomeBtnContainer {
+                    text-align: center;
+                    margin-top: 50px;
+                    a {
+                        color: black;
+                        background-color: white;
+                        border-radius: 100px;
+                        display: block;
+                        width: 300px;
+                        margin: 40px auto 0 auto;
+                        font-weight: bold;
+                        font-size: 16px;
+                        padding: 5px;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        #LoginContent {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            background-color: $black;
+            color: white;
+            padding: 10px 30px;
+            border: 2px solid white;
+            border-radius: 30px;
+            #LoginContainer {
+                h1 {
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                form {
+                    font-size: 0;
+                    .form-group {
+                        display: inline-block;
+                        width: 45%;
+                        margin: 20px 2.5% 0 2.5%;
+                        label {
+                            font-weight: bold;
+                            font-size: 14px;
+                            padding-left: 2px;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }   
+                    .form-check {
+                        display: block;
+                        text-align: center;
+                        margin: 30px auto 0 auto;
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 100%;
+                        margin: 20px 0 0 0;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            height: 30px;
+                            padding: 0;
+                            font-size: 14px;
+                            width: 95%;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    margin-top: 30px;
+                    a {
+                        color: white;
+                        width: 100%;
+                        text-align: center;
+                        display: inline-block;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        #PasswordContent {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            background-color: $black;
+            color: white;
+            padding: 10px 30px;
+            border: 2px solid white;
+            border-radius: 30px;
+            #PasswordContainer {
+                h1 {
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                }
+                form {
+                    .form-group {
+                        label {
+                            font-weight: bold;
+                            font-size: 14px;
+                            padding-left: 2px;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 100%;
+                        margin: 20px 0 0 0;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            height: 30px;
+                            padding: 0;
+                            font-size: 14px;
+                            width: 100%;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    margin-top: 20px;
+                    a {
+                        color: white;
+                        width: 100%;
+                        text-align: center;
+                        display: inline-block;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        #SignupContent {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            background-color: $black;
+            color: white;
+            padding: 10px 30px;
+            border: 2px solid white;
+            border-radius: 30px;
+            #SignupContainer {
+                h1 {
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                form {
+                    font-size: 0;
+                    .form-group {
+                        display: inline-block;
+                        width: 45%;
+                        margin: 20px 2.5% 0 2.5%;
+                        label {
+                            font-weight: bold;
+                            font-size: 14px;
+                            padding-left: 2px;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 100%;
+                        margin: 40px 0 0 0;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            height: 30px;
+                            padding: 0;
+                            font-size: 14px;
+                            width: 95%;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    margin-top: 30px;
+                    a {
+                        color: white;
+                        width: 100%;
+                        text-align: center;
+                        display: inline-block;
+                        font-weight: bold;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        #EditContent {   
+            #EditContainer {
+                width: 80%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); 
+                background-color: $black;
+                color: white;
+                padding: 10px 10px;
+                border: 2px solid white;
+                border-radius: 30px;
+                h1 {
+                    color: white;
+                    padding-left: 20px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0 auto;
+                }
+                form {
+                    width: 95%;
+                    margin: auto;
+                    font-size: 0;
+                    .form-group {
+                        display: inline-block;
+                        width: 45%;
+                        margin: 10px 2.5% 0 2.5%;
+                        label {
+                            margin-top: 15px;
+                            color: white;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-left: 5px;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }
+                    .image-form {
+                        display: inline-block;
+                        width: 100px;
+                        height: 100px;
+                        margin: 0 10px 30px 20%;
+                        .edit-img {
+                            #image {
+                                width: 100px;
+                                height: 100px;
+                                object-fit: cover;
+                                border-radius: 3px;
+                                border: 3px solid white;
+                                object-position: 10% 50%;
+                            }
+                        }
+                    }
+                    .image-file {
+                        display: none;
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 95%;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            margin-top: 40px;
+                            width: 100%;
+                            padding: 3px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    text-align: center;
+                    margin: 50px auto 15px auto;
+                    width: 95%;
+                    a {
+                        width: 95%;
+                        margin: auto;
+                        color: white;
+                        font-weight: bold;
+                        display: block;
+                        font-size: 14px;
+                        background-color: rgb(117, 48, 48);
+                        border-color: rgb(117, 48, 48);
+                        padding: 0;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    #Container {
+        overflow: auto;
+        scroll-snap-type: x mandatory;
+        display: flex;
+        height: calc(100% - 50px);
+        #Modal {
+            background-color: rgba(0, 0, 0, 0.836);
+            width: 100vw;
+            height: 100%;
+            z-index: 10;
+            position: fixed;
+            display: none;
+            #AddMemberContainer {
+                width: 80%;
+                height: 60%;
+                background-color: $black;
+                border: 2px solid white;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                overflow: auto;
+                #add-member-close {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                }
+                #AddMemberContent {
+                    ul {
+                        width: 100%;
+                        padding: 30px 0 0 0;
+                        li {
+                            width: 25%;
+                            float: left;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            text-align: center;
+                            form {
+                                margin-top: 10px;
+                                .btn {
+                                    font-size: 14px;
+                                    padding: 0 15px;
+                                }
+                            }
+                            span {
+                                color: white;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: block;
+                                margin-top: 5px;
+                            }
+                            img {
+                                height: 80px;
+                                width: 80px;
+                                object-fit: cover;
+                                border: 1px solid white;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+            #RemoveMemberContainer {
+                width: 80%;
+                height: 60%;
+                background-color: $black;
+                border: 2px solid white;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                overflow: auto;
+                #remove-member-close {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                }
+                #RemoveMemberContent {
+                    ul {
+                        width: 100%;
+                        padding: 30px 0 0 0;
+                        li {
+                            width: 25%;
+                            float: left;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            text-align: center;
+                            form {
+                                margin-top: 10px;
+                                .btn {
+                                    font-size: 14px;
+                                    padding: 0 15px;
+                                }
+                            }
+                            span {
+                                color: white;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: block;
+                                margin-top: 5px;
+                            }
+                            img {
+                                height: 80px;
+                                width: 80px;
+                                object-fit: cover;
+                                border: 1px solid white;
+                                border-radius: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+            #RoomCreate {
+                display: none;
+                color: white;
+                width: 80%;
+                margin: auto;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 10px 20px;
+                h1 {
+                    margin-bottom: 30px;
+                }
+                #room-modal-close {
+                    font-size: 20px;
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                    cursor: pointer;
+                }
+                #RoomCreateForm {
+                    form {
+                        width: 100%;
+                        margin: auto;
+                        font-size: 0;
+                        label {
+                            font-size: 20px;
+                            margin: 0;
+                            padding-left: 5px;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                            display: block;
+                        }
+                        .form-control {
+                            display: inline-block;
+                            font-size: 16px;
+                            margin-bottom: 20px;
+                            width: 75%;
+                            margin-right: 5%;
+                            padding: 4px 10px;
+                        }
+                        .btn {
+                            display: inline-block;
+                            width: 20%;
+                            vertical-align: top;
+                        }
+                    }
+                }
+            }
+            #FriendCreate {
+                display: none;
+                color: white;
+                width: 80%;
+                margin: auto;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 10px 20px;
+                h1 {
+                    margin-bottom: 30px;
+                }
+                #friend-modal-close {
+                    font-size: 20px;
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                    cursor: pointer;
+                }
+                #FriendSearchForm {
+                    form {
+                        width: 100%;
+                        margin: auto;
+                        font-size: 0;
+                        label {
+                            font-size: 20px;
+                            margin: 0;
+                            padding-left: 5px;
+                            font-weight: bold;
+                            margin-bottom: 5px;
+                            display: block;
+                        }
+                        .form-control {
+                            display: inline-block;
+                            font-size: 16px;
+                            margin-bottom: 20px;
+                            width: 75%;
+                            margin-right: 5%;
+                            padding: 4px 10px;
+                        }
+                        .btn {
+                            display: inline-block;
+                            width: 20%;
+                            vertical-align: top;
+                        }
+                    }
+                }
+            }
+            #AddFriendContainer {
+                display: none;
+                color: white;
+                width: 40%;
+                margin: auto;
+                position: absolute;
+                top: calc(50% - 100px);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: $black;
+                border: 2px solid white;
+                border-radius: 10px;
+                padding: 10px 20px;
+                #AddFriendContent {
+                    #add-friend-modal-close {
+                        font-size: 20px;
+                        position: absolute;
+                        right: 20px;
+                        top: 10px;
+                        cursor: pointer;
+                    }
+                    .add-friend-not-user {
+                        display: block;
+                        margin: 130px auto 0 auto;
+                        text-align: center;
+                        font-weight: bold;
+                        font-size: 16px;
+                    }
+                    #add-not-friend-back-btn {
+                        display: block;
+                        margin: 20px auto 100px auto;
+                        text-align: center;
+                        font-size: 20px;
+                    }
+                    #add-friend-back-btn {
+                        font-size: 20px;
+                        position: absolute;
+                        left: 20px;
+                        top: 10px;
+                        cursor: pointer;
+                    }
+                    #AddFriendUser {
+                        text-align: center;
+                        margin-top: 80px;
+                        img {
+                            width: 100px;
+                            height: 100px;
+                            object-fit: cover;
+                            border: 2px solid white;
+                            border-radius: 5px;
+                        }
+                        span {
+                            display: block;
+                            margin-top: 10px;
+                            font-weight: bold;
+                        }
+                    }
+                    #AddFriendForm {
+                        text-align: center;
+                        margin-top: 40px;
+                        margin-bottom: 40px;
+                        span {
+                            display: block;
+                            margin-bottom: 20px;
+                        }
+                        form {
+                            display: inline-block;
+                            #add-friend-ok-btn {
+                                margin-right: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #LeftSideContent {
+            scroll-snap-align: start;
+            width: 100vw;
+            height: 100%;
+            background-color: $red;
+            flex: none;
+            .FriendContent {
+                overflow: auto;
+                height: 100%;
+                position: relative;
+                #FriendList {
+                    padding: 30px 0 0 0;
+                    position: relative;
+                    height: 100%;
+                    background-color: $black;
+                    overflow: auto;
+                    margin: 0;
+                    li {
+                        background-color: $black;
+                        color: white;
+                        font-size: 14px;
+                    }
+                    .room-member {
+                        margin: 15px 3%;
+                        width: 44%;
+                        float: left;
+                        border: 2px solid white;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            object-fit: cover;
+                            border-radius: 5px 0 0 5px;
+                            border-right: 2px solid white;
+                            margin-right: 15px;
+                        }
+                    }
+                    .head {
+                        font-weight: bold;
+                        padding: 10px 0 5px 10px;
+                        margin: 0 20px;
+                        border-bottom: 2px solid white;
+                        display: block;
+                        clear: both;
+                    }
+                    #FriendCreateBtn {
+                        font-weight: bold;
+                        text-align: right;
+                        color: black;
+                        padding: 5px 15px 5px 15px;  
+                        margin: 20px 30px;
+                        background-color: white;
+                        border-radius: 5px;
+                        display: inline-block;
+                        cursor: pointer;
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                        font-size: 14px;
+                    }
+                }
+                #MemberList {
+                    padding: 30px 0 0 0;
+                    position: relative;
+                    height: 100%;
+                    background-color: $black;
+                    margin: 0;
+                    overflow: auto;
+                    .head {
+                        color: white;
+                        font-weight: bold;
+                        font-size: 14px;
+                        border-bottom: 2px solid white;
+                        display: block;
+                        padding: 10px 0 5px 10px;
+                        margin: 0 20px;
+                    }
+                    #AddMemberContainerBtn {
+                        position: absolute;
+                        color: black;
+                        font-weight: bold;
+                        background-color: white;
+                        border-radius: 5px;
+                        font-size: 14px;
+                        padding: 5px 15px;
+                        right: 0;
+                        top: 0;
+                        margin: 20px 30px;
+                    }
+                    li {
+                        background-color: $black;
+                        color: white;
+                        font-size: 14px;
+                    }
+                    .room-member {
+                        margin: 15px 3%;
+                        width: 44%;
+                        float: left;
+                        border: 2px solid white;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        img {
+                            width: 60px;
+                            height: 60px;
+                            object-fit: cover;
+                            border-radius: 5px 0 0 5px;
+                            border-right: 2px solid white;
+                            margin-right: 15px;
+                        }
+                    }
+                }
+            }
+        }
+        #CenterContent {    
+            scroll-snap-align: start;
+            width: 100vw;
+            background-color: $red;
+            height: 100%;
+            flex: none;
+            .HomeContent {
+                background-color: $black;
+                height: 100%;
+                #InfoContainer {
+                    display: none;
+                }
+                #InnerContent {
+                    height: 100%;
+                    position: relative;
+                    #InfoRoomBottom {
+                        display: none;
+                    }
+                    #UserShow {
+                        #UserContent {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            img {
+                                width: 200px;
+                                height: 200px;
+                                object-fit: cover;
+                                border: 2px solid white;
+                                border-radius: 200px;
+                                display: block;
+                            }
+                            span {
+                                display: block;
+                                color: white;
+                                text-align: center;
+                                margin-top: 10px;
+                                font-size: 20px;
+                                font-weight: bold;
+                            }
+                            a {
+                                display: block;
+                                color: white;
+                                text-align: center;
+                                margin-top: 10px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+            .RoomContent {
+                background-color: $black;
+                height: 100%;
+                padding-top: 10px;
+                #InnerContent {
+                    height: 100%;
+                    #InfoRoomBottom {
+                        a {
+                            display: none;
+                        }
+                        .right-menu {
+                            display: none;
+                        }
+                        .room-name {
+                            color: white;
+                            font-weight: bold;
+                            display: block;
+                            text-align: center;
+                            padding-top: 10px;
+                            margin: 0 20px;
+                            font-size: 18px;
+                        }
+                    }
+                    #Room {
+                        background-color: $black;
+                        margin: 10px 0 0 0;
+                        height: calc(100% - 51px);
+                        #MessageContent {
+                            height: calc(100% - 70px);
+                            background-color: $red;
+                            border-radius: 0 0 10px 10px;
+                            border-top: 2px solid white;
+                            border-bottom: 2px solid white;
+                            #direct_messages {
+                                padding-top: 10px;
+                                height: 100%;
+                                overflow: auto;
+                                padding-bottom: 10px;
+                                .current_user_message {
+                                    position: relative;
+                                    text-align: right;
+                                    margin-top: 10px;
+                                    margin-bottom: 10px;
+                                    .user-content {
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        img {
+                                            height: 50px;
+                                            width: 50px;
+                                            object-fit: cover;
+                                            border: 2px solid white;
+                                            border-radius: 5px;
+                                            float: right;
+                                            margin-right: 10px;
+                                        }
+                                        .user-name {
+                                            color: white;
+                                            line-height: 50px;
+                                            margin-right: 10px;
+                                            font-weight: bold;
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    .message-content {
+                                        color: white;
+                                        border: 3px solid white;
+                                        display: inline-block;
+                                        background-color: black;
+                                        padding: 5px 10px;
+                                        max-width: 60%;
+                                        margin-right: 70px;
+                                        margin-top: 40px;
+                                        margin-bottom: 5px;
+                                        text-align: left;
+                                    }
+                                    .message-time {
+                                        color: white;
+                                        font-size: 14px;
+                                        display: block;
+                                        margin-right: 70px;
+                                    }
+                                }
+                                .other_user_message {
+                                    position: relative;
+                                    margin-top: 10px;
+                                    margin-bottom: 10px;
+                                    .user-content {
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        img {
+                                            height: 50px;
+                                            width: 50px;
+                                            object-fit: cover;
+                                            border: 2px solid white;
+                                            border-radius: 5px;  
+                                            margin-left: 10px;
+                                        }
+                                        .user-name {
+                                            color: white;
+                                            line-height: 50px;
+                                            margin-left: 7px;
+                                            font-weight: bold;
+                                            font-size: 14px;
+                                        }
+                                    }
+                                    .message-content {
+                                        color: white;
+                                        border: 3px solid white;
+                                        display: inline-block;
+                                        background-color: black;
+                                        padding: 5px 10px;
+                                        max-width: 60%;
+                                        margin-left: 70px;
+                                        margin-top: 40px;
+                                        margin-bottom: 5px;
+                                    }
+                                    .message-time {
+                                        color: white;
+                                        font-size: 14px;
+                                        display: block;
+                                        margin-left: 70px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #RightSideContent {
+            scroll-snap-align: start;
+            width: 100vw;
+            background-color: $red;
+            height: 100%;
+            flex: none;
+            .RoomContent {
+                background-color: $black;
+                height: 100%;
+                overflow: auto;
+                color: white;
+                position: relative;
+                #RoomCreateBtn {
+                    font-size: 14px;
+                    cursor: pointer;
+                    display: inline-block;
+                    background-color: white;
+                    color: black;
+                    padding: 7.5px 20px;
+                    position: absolute;
+                    right: 30px;
+                    top: 20px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                #group-list {
+                    padding-top: 30px;
+                    padding-left: 0;
+                    #room-list-head {
+                        border-bottom: 2px solid white;
+                        margin: 0 20px;
+                        font-weight: bold;
+                        padding: 10px 0 5px 10px;
+                        clear: both;
+                        display: block;
+                        font-size: 16px;
+                    }
+                    .myroom {
+                        display: none;
+                    }
+                    .group {
+                        border: 2px solid white;
+                        width: 44%;
+                        line-height: 60px;
+                        margin: 15px 3%;
+                        float: left;
+                        border-radius: 5px;
+                        font-weight: bold; 
+                        padding-left: 20px;
+                        position: relative;
+                        .room-link {
+                            color: white;
+                        }
+                        .new-light {
+                            font-size: 20px;
+                            color: rgba(255, 255, 255, 0);
+                            position: absolute;
+                            right: 0;
+                            margin-right: 10px;
+                        }
+                        .new {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        #message-form {
+            width: 100%;
+            position: absolute;
+            bottom: 20px;
+            font-size: 0;
+            #abc-btn {
+                display: none;
+            }
+            #message-form-name {
+                display: none;
+            }
+            #chat-btn {
+                background-color: rgb(15, 84, 189);
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                width: 10%;
+                line-height: 34px;
+                display: inline-block;
+                text-align: center;
+                vertical-align: top;
+                min-height: 34px;
+                border-radius: 30px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1025px){
+
+    .alert {
+        width: 900px;
+        margin: auto;
+        margin-top: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        h4 {
+            display: none;
+        }
+        ul {
+            font-size: 14px;
+            list-style-type: disc;
+        }
+    }
+
+    .phone {
+        display: none;
+    }
+
+    body {
+        background-color: rgb(223, 223, 223);
+        font-family: 'Lato', 'Noto Sans JP', 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    #Main {
+        padding-top: 45px;
+        background-color: $red;
+        max-width: 1500px;
+        margin: auto;
+        height: 100vh;
+    }
+
+    header {
+        background-color: $black;
+        color: white;
+        height: 45px;
+        width: 100%;
+        position: fixed;
+        z-index: 100;
+        border-bottom: 2px solid white;
+        span {
+            display: block;
+            height: 45px;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            #Logo {
+                color: white;
+                font-weight: bold;
+                line-height: 45px;
+                font-size: 25px;
+            }
+        }
+        #Menu {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            span {
+                line-height: 45px;
+                a {
+                    font-size: 23px;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    #Home {
+        width: 1000px;
+        height: calc(100vh - 45px);
+        margin: auto;
+        position: relative;
+        #Content {
+            #HomeContainer {
+                width: 700px;
+                height: 300px;
+                background-color: $black;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                border: 2px solid white;
+                h1 {
+                    color: white;
+                    font-size: 120px;
+                    text-shadow:0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black;
+                    position: absolute;
+                    z-index: 5;
+                    top: -20px;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-weight: bold;
+                }
+                span {
+                    color: white;
+                    font-weight: bold;
+                    font-size: 20px;
+                    display: block;
+                    text-align: center;
+                    margin-top: 80px;
+                }
+                #HomeBtnContainer {
+                    margin: 70px auto;
+                    text-align: center;
+                    a {
+                        text-decoration: none;
+                    }
+                    .HomeNewBtn {
+                        color: black;
+                        background-color: white;
+                        width: 250px;
+                        display: inline-block;
+                        text-align: center;
+                        font-size: 20px;
+                        font-weight: bold;
+                        padding: 5px 0;
+                        border-radius: 5px;
+                    }
+                    .HomeLoginBtn {
+                        color: black;
+                        background-color: white;
+                        width: 250px;
+                        display: inline-block;
+                        text-align: center;
+                        font-size: 20px;
+                        font-weight: bold;
+                        margin-left: 30px;
+                        padding: 5px 0;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+        #SignupContent {
+            #SignupContainer {
+                width: 900px;
+                padding: 10px 0;
+                background-color: $black;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                border: 2px solid white;
+                h1 {
+                    color: white;
+                    padding-left: 20px;
+                    padding-bottom: 10px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0 auto;
+                }
+                form {
+                    width: 85%;
+                    margin: auto;
+                    font-size: 0;
+                    .form-group {
+                        display: inline-block;
+                        width: 40%;
+                        margin: 10px 5% 0 5%;
+                        label {
+                            margin-top: 15px;
+                            color: white;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-left: 5px;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 90%;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            margin-top: 50px;
+                            width: 100%;
+                            padding: 3px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    text-align: center;
+                    margin-top: 30px;
+                    a {
+                        color: white;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        #LoginContent {
+            #LoginContainer {
+                width: 900px;
+                padding: 10px 0;
+                background-color: $black;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                border: 2px solid white;
+                h1 {
+                    color: white;
+                    padding-left: 20px;
+                    padding-bottom: 10px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0 auto;
+                }
+                form {
+                    width: 85%;
+                    margin: auto;
+                    font-size: 0;
+                    .form-group {
+                        display: inline-block;
+                        width: 40%;
+                        margin: 10px 5% 0 5%;
+                        label {
+                            color: white;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-left: 5px;
+                            margin-bottom: 2px;
+                        }
+                        .form-check-label {
+                            margin-top: 0;
+                            font-size: 16px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }
+                    .form-check {
+                        display: block;
+                        text-align: center;
+                        margin: auto;
+                        margin-top: 40px;
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 90%;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            margin-top: 20px;
+                            width: 100%;
+                            padding: 3px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    text-align: center;
+                    margin-top: 30px;
+                    a {
+                        color: white;
+                        font-weight: bold;
+                        margin-top: 10px;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        #PasswordContent {
+            #PasswordContainer {
+                width: 550px;
+                background-color: $black;
+                padding: 10px 0;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                border: 2px solid white;
+                h1 {
+                    color: white;
+                    text-align: center;
+                    padding-top: 20px;
+                    font-size: 25px;
+                    font-weight: bold;
+                    margin: 0 auto;
+                    padding-bottom: 30px;
+                }
+                form {
+                    width: 85%;
+                    margin: auto;
+                    .form-group {
+                        label {
+                            margin-top: 15px;
+                            color: white;
+                            font-size: 18px;
+                            font-weight: bold;
+                            margin-left: 5px;
+                            margin-bottom: 2px;
+                        }
+                        .form-check-label {
+                            margin-top: 0;
+                            font-size: 16px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 3px 10px;
+                            height: 28px;
+                        }
+                    }
+                    .btn-group {
+                        display: block;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            margin-top: 20px;
+                            width: 100%;
+                            padding: 3px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    text-align: center;
+                    margin-top: 35px;
+                    a {
+                        color: white;
+                        font-weight: bold;
+                        margin-top: 10px;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        #EditContent {   
+            #EditContainer {
+                width: 900px;
+                padding: 10px 0;
+                background-color: $black;
+                margin: auto;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                border: 2px solid white;
+                h1 {
+                    color: white;
+                    padding-left: 20px;
+                    font-size: 30px;
+                    font-weight: bold;
+                    margin: 0 auto;
+                }
+                form {
+                    width: 85%;
+                    margin: auto;
+                    font-size: 0;
+                    .form-group {
+                        display: inline-block;
+                        width: 40%;
+                        margin: 10px 5% 0 5%;
+                        label {
+                            margin-top: 15px;
+                            color: white;
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-left: 5px;
+                            margin-bottom: 2px;
+                        }
+                        .form-control {
+                            font-size: 16px;
+                            padding: 0 5px;
+                            height: 30px;
+                        }
+                    }
+                    .image-form {
+                        display: inline-block;
+                        width: 100px;
+                        height: 100px;
+                        margin: 0 0 30px 20%;
+                        .edit-img {
+                            #image {
+                                width: 100px;
+                                height: 100px;
+                                object-fit: cover;
+                                border-radius: 3px;
+                                border: 3px solid white;
+                            }
+                        }
+                    }
+                    .image-file {
+                        display: none;
+                    }
+                    .btn-group {
+                        display: block;
+                        width: 90%;
+                        .btn {
+                            margin: auto;
+                            display: block;
+                            margin-top: 30px;
+                            width: 100%;
+                            padding: 3px;
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                .form-link {
+                    text-align: center;
+                    margin: 30px auto 15px auto;
+                    width: 85%;
+                    a {
+                        width: 90%;
+                        margin: auto;
+                        color: white;
+                        font-weight: bold;
+                        display: block;
+                        font-size: 16px;
+                        background-color: rgb(117, 48, 48);
+                        border-color: rgb(117, 48, 48);
+                        padding: 0;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    #Container {
+        height: calc(100%);
+        width: 100%;
+        font-size: 0;
+        position: relative;
+        #message-form {
+            height: 30px;
+            background-color: $black;
+            z-index: 15;
+            padding-top: 30px;
+            #message-form-name {
+                color: rgb(255, 255, 255);
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            #abc-btn {
+                color: white;
+                font-size: 18px;
+                line-height: 30px;
+                position: absolute;
+                right: 10px;
+                top: 0;
+                cursor: all-scroll;
+                -webkit-user-select: none;
+                &:active {
+                    cursor: all-scroll;
+                }
+            }
+            textarea {
+                min-width: 300px;
+                font-size: 14px;
+                height: 150px;
+                resize: both;
+                opacity: 0.7;
+                &:focus {
+                    opacity: 1;
+                }
+            }
+        }
+        #Modal {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 50;
+            background-color: rgba(0, 0, 0, 0.822);
+            display: none;
+            #AddMemberContainer {
+                width: 900px;
+                height: 0px;
+                background-color: $black;
+                border: 30px solid $red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                overflow: auto;
+                #add-member-close {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
+                #AddMemberContent {
+                    ul {
+                        width: 100%;
+                        padding: 30px 0 0 30px;
+                        li {
+                            width: 20%;
+                            float: left;
+                            margin-top: 30px;
+                            text-align: center;
+                            form {
+                                margin-top: 10px;
+                                .btn {
+                                    font-size: 14px;
+                                    padding: 3px 15px;
+                                }
+                            }
+                            span {
+                                color: white;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: block;
+                                margin-top: 5px;
+                            }
+                            img {
+                                height: 100px;
+                                width: 100px;
+                                object-fit: cover;
+                                border: 2px solid white;
+                            }
+                        }
+                    }
+                }
+            }
+            #RemoveMemberContainer {
+                width: 900px;
+                height: 0px;
+                background-color: $black;
+                border: 30px solid $red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                overflow: auto;
+                #remove-member-close {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
+                #RemoveMemberContent {
+                    ul {
+                        width: 100%;
+                        padding: 30px 0 0 0;
+                        li {
+                            width: 20%;
+                            float: left;
+                            margin-top: 30px;
+                            margin-bottom: 20px;
+                            text-align: center;
+                            form {
+                                margin-top: 10px;
+                                .btn {
+                                    font-size: 14px;
+                                    padding: 3px 15px;
+                                }
+                            }
+                            span {
+                                color: white;
+                                font-size: 14px;
+                                font-weight: bold;
+                                display: block;
+                                margin-top: 5px;
+                            }
+                            img {
+                                height: 100px;
+                                width: 100px;
+                                object-fit: cover;
+                                border: 2px solid white;
+                            }
+                        }
+                    }
+                }
+            }
+            #RoomCreate {
+                width: 900px;
+                height: 0px;
+                background-color: $black;
+                border: 30px solid $red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                h1 {
+                    color: white;
+                    font-size: 100px;
+                    transform: rotate(-15deg);
+                    text-shadow:0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black;
+                    position: absolute;
+                    z-index: 5;
+                    top: -80px;
+                    left: -150px;
+                }
+                #room-modal-close {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
+                #RoomCreateForm {
+                    width: 80%;
+                    margin: auto;
+                    padding-top: 60px;
+                    label {
+                        color: white;
+                        font-size: 20px;
+                        display: block;
+                        font-weight: bold;
+                        margin-bottom: 0;
+                    }
+                    .form-control {
+                        display: inline-block;
+                        width: 89%;
+                    }
+                    .btn {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin-left: 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            #FriendCreate {
+                width: 900px;
+                height: 0px;
+                background-color: $black;
+                border: 30px solid $red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                h1 {
+                    color: white;
+                    font-size: 100px;
+                    transform: rotate(-15deg);
+                    text-shadow:0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black,0 0 5px $black;
+                    position: absolute;
+                    z-index: 5;
+                    top: -80px;
+                    left: -150px;
+                }
+                #friend-modal-close {
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: white;
+                    float: right;
+                    margin-right: 10px;
+                    cursor: pointer;
+                }
+                #FriendSearchForm {
+                    width: 80%;
+                    margin: auto;
+                    padding-top: 60px;
+                    span {
+                        color: white;
+                        font-size: 20px;
+                    }
+                    label {
+                        color: white;
+                        font-size: 20px;
+                        display: block;
+                        font-weight: bold;
+                        margin-bottom: 0;
+                    }
+                    .form-control {
+                        display: inline-block;
+                        width: 89%;
+                    }
+                    .btn {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin-left: 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+            #AddFriendContainer {
+                width: 500px;
+                height: 0px;
+                background-color: $black;
+                border: 30px solid $red;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: none;
+                #AddFriendContent {
+                    height: 100%;
+                    position: relative;
+                    .add-friend-not-user {
+                        font-size: 20px;
+                        color: white;
+                        font-weight: bold;
+                        position: absolute;
+                        top: 46%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                    #add-not-friend-back-btn {
+                        color: white;
+                        font-size: 18px;
+                        font-weight: bold;
+                        position: absolute;
+                        top: 60%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                    #add-friend-back-btn {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: white;
+                        float: left;
+                        margin-left: 10px;
+                        cursor: pointer;
+                    }
+                    #add-friend-modal-close {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: white;
+                        float: right;
+                        margin-right: 10px;
+                        cursor: pointer;
+                    }
+                    #AddFriendUser {
+                        display: inline-block;
+                        position: absolute;
+                        top: 40%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        span {
+                            font-size: 20px;
+                            color: white;
+                            display: block;
+                            text-align: center;
+                            margin-top: 10px;
+                        }
+                        #add-friend-image {
+                            width: 150px;
+                            height: 150px;
+                            object-fit: cover;
+                            border: 3px solid white;
+                        }
+                    }
+                    #AddFriendForm {
+                        width: 100%;
+                        text-align: center;
+                        position: absolute;
+                        bottom: 0;
+                        span {
+                            color: white;
+                            font-size: 18px;
+                            font-weight: bold;
+                            display: block;
+                            margin-bottom: 80px;
+                        }
+                        .add-friend-form-span {
+                            font-size: 16px;
+                            font-weight: bold;
+                            margin-bottom: 30px;
+                            display: block;
+                        }
+                        form {
+                            margin: auto;
+                            padding-bottom: 50px;
+                            display: inline-block;
+                            .btn {
+                                display: inline-block;
+                                vertical-align: top;
+                                font-weight: bold;
+                            }
+                            #add-friend-no-btn {
+                                margin-left: 50px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #LeftSideContent {
+            width: 250px;
+            height: calc(100vh - 45px);
+            background-color: $black;
+            position: fixed;
+            display: inline-block;
+            overflow: auto;
+            border-right: 2px solid white;
+            z-index: 10;
+            padding-bottom: 50px;
+            #AddMemberContainerBtn {
+                color: white;
+                text-align: center;
+                border-bottom: 1px solid white;
+                font-size: 16px;
+                line-height: 50px;
+                font-weight: bold;
+                margin-bottom: 0;
+                cursor: pointer;
+                display: block;
+            }
+            .head {
+                color: white;
+                text-align: center;
+                padding-left: 0;
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 35px;
+                display: block;
+                cursor: pointer;
+                height: 35px;
+                position: relative;
+                border-bottom: 1px solid white;
+                #RemoveMemberContainerBtn {
+                    position: absolute;
+                    right: 0;
+                    margin-right: 10px;
+                }
+            }
+            .FriendContent {
+                padding-left: 5px;
+                padding-right: 5px;
+                ul {
+                    padding: 0;
+                    #FriendCreateBtn {
+                        text-align: center;
+                        padding-left: 0;
+                        font-size: 18px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                    li {
+                        font-size: 16px;
+                        color: white;
+                        border-bottom: 1px solid white;
+                        line-height: 80px;
+                    }
+                    .head {
+                        text-align: center;
+                        padding-left: 0;
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 35px;
+                        cursor: pointer;
+                        height: 35px;
+                        position: relative;
+                    }
+                    .room-member {
+                        font-size: 16px;
+                        color: white;
+                        border-bottom: 1px solid white;
+                        line-height: 80px;
+                        padding-left: 10px;
+                        height: 80px;
+                        overflow: hidden;
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            object-fit: cover;
+                            border: 2px solid white;
+                            margin-right: 10px;
+                            border-radius: 3px;
+                        }
+                    }
+                }
+            }
+        }
+        #CenterContent {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            .HomeContent {
+                margin-left: 250px;
+                margin-right: 250px;
+                height: calc(100vh - 45px);
+                #InfoContainer {
+                    background-color: $black;
+                    height: 42px;
+                    position: relative;
+                    #InfoInner {
+                        width: 98%;
+                        background-color: white;
+                        height: 28px;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        border-radius: 3px;
+                        padding: 0 5px;
+                        #notice-content {
+                            color: black;
+                            font-size: 18px;
+                            line-height: 28px;
+                            font-weight: bold;
+                            display: block;
+                            overflow: hidden;
+                            span {
+                                font-size: 16px;
+                                display: block;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+                #InnerContent {
+                    #InfoRoomBottom {
+                        position: relative;
+                        text-align: center;
+                        border-bottom: 2px solid white;
+                        background-color: $black;
+                        height: 35px;
+                        .left-menu {
+                            font-size: 20px;
+                            font-weight: bold;
+                            color: white;
+                            position: absolute;
+                            left: 10px;
+                        }
+                        .room-name {
+                            font-size: 20px;
+                            font-weight: bold;
+                            color: white;
+                            line-height: 30px;
+                        }
+                    }
+                    #UserShow {
+                        height: calc(100vh - 122px);
+                        padding-top: 80px;
+                        position: relative;
+                        #UserContent {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            img {
+                                width: 170px;
+                                height: 170px;
+                                border-radius: 150px;
+                                border: 5px solid $black;
+                                display: block;
+                                margin: auto; 
+                                object-fit: cover;
+                            }
+                            span {
+                                font-size: 20px;
+                                color: white;
+                                font-weight: bold;
+                                display: block;
+                                text-align: center;
+                                margin-top: 10px;
+                            }
+                            a {
+                                color: white;
+                                font-size: 18px;
+                                font-weight: bold;
+                                display: block;
+                                text-align: center;
+                                margin-top: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            .RoomContent {
+                margin-left: 250px;
+                margin-right: 250px;
+                height: calc(100vh - 45px);
+                #InnerContent {
+                    #InfoRoomBottom {
+                        position: relative;
+                        text-align: center;
+                        border-bottom: 2px solid white;
+                        background-color: $black;
+                        height: 35px;
+                        .left-menu {
+                            font-size: 20px;
+                            font-weight: bold;
+                            color: white;
+                            position: absolute;
+                            left: 10px;
+                        }
+                        .room-name {
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: white;
+                            line-height: 30px;
+                        }
+                        .right-menu {
+                            font-size: 20px;
+                            font-weight: bold;
+                            color: white;
+                            position: absolute;
+                            right: 10px;
+                        }
+                    }
+                    #Room {
+                        height: calc(100% - 77px);
+                        position: relative;
+                        #MessageContent {
+                            height: calc(100vh - 45px - 77px);
+                            width: 100%;
+                            #direct_messages {
+                                padding-top: 10px;
+                                height: 100%;
+                                overflow: auto;
+                                padding-bottom: 20px;
+                                .current_user_message{
+                                    position: relative;
+                                    text-align: right;
+                                    margin-top: 20px;
+                                    .user-content {  
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        img {
+                                            width: 50px;
+                                            height: 50px;
+                                            object-fit: cover;
+                                            float: right;
+                                            border-radius: 3px;
+                                            border: 2px solid white;
+                                            margin-right: 20px;
+                                        }
+                                        .user-name {
+                                            color: white;
+                                            font-size: 12px;
+                                            margin-right: 10px;
+                                            line-height: 50px;
+                                            float: right;
+                                        }
+                                    }
+                                    .message-content {
+                                        font-size: 14px;
+                                        background-color: black;
+                                        color: white;
+                                        font-weight: bold;
+                                        max-width: 60%;
+                                        border: 3px solid white;
+                                        padding: 5px 10px;
+                                        display: inline-block;
+                                        margin-top: 39px;
+                                        margin-right: 78px;
+                                        margin-bottom: 0;
+                                        text-align: left;
+                                        word-wrap:break-word;
+                                    }
+                                    .message-time {
+                                        font-size: 12px;
+                                        color: rgb(252, 252, 252);
+                                        display: block;
+                                        margin-right: 80px;
+                                        margin-top: 3px;
+                                    }
+                                }
+                                .other_user_message {
+                                    position: relative;
+                                    text-align: left;
+                                    margin-top: 20px;
+                                    .user-content {  
+                                        display: block;
+                                        width: 100%;
+                                        position: absolute;
+                                        img {
+                                            width: 50px;
+                                            height: 50px;
+                                            object-fit: cover;
+                                            float: left;
+                                            border-radius: 3px;
+                                            border: 2px solid white;
+                                            margin-left: 20px;
+                                        }
+                                        .user-name {
+                                            color: white;
+                                            font-size: 12px;
+                                            margin-left: 10px;
+                                            line-height: 50px;
+                                        }
+                                    }
+                                    .message-content {
+                                        font-size: 14px;
+                                        background-color: black;
+                                        color: white;
+                                        font-weight: bold;
+                                        max-width: 60%;
+                                        border: 3px solid white;
+                                        padding: 5px 10px;
+                                        display: inline-block;
+                                        margin-top: 39px;
+                                        margin-left: 78px;
+                                        margin-bottom: 0;
+                                        word-wrap:break-word;
+                                    }
+                                    .message-time {
+                                        font-size: 12px;
+                                        color: rgb(252, 252, 252);
+                                        display: block;
+                                        margin-left: 80px;
+                                        margin-top: 3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #RightSideContent {
+            width: 250px;
+            height: 100%;
+            background-color: $black;
+            position: absolute;
+            right: 0;
+            display: inline-block;
+            overflow-y: scroll;
+            border-left: 2px solid white;
+            z-index: 5;
+            .RoomContent {
+                padding-left: 10px;
+                padding-right: 10px;
+                h5 {
+                    color: white;
+                    margin-bottom: 0;
+                    font-size: 18px;
+                    font-weight: bold;
+                    line-height: 80px;
+                    cursor: pointer;
+                    border-bottom: 1px solid white;
+                    text-align: center;
+                }
+                ul {
+                    padding: 0;
+                    #room-list-head {
+                        color: white;
+                        font-size: 16px;
+                        border-bottom: 1px solid white;
+                        text-align: center;
+                        font-weight: bold;
+                        line-height: 35px;
+                    }
+                    a {
+                        text-decoration-line: none;
+                    }
+                    .group {
+                        padding: 10px 0;
+                        position: relative;
+                        .new {
+                            width: 100%;
+                            line-height: 50px;
+                            background-color: $red;
+                            color: white;
+                            font-size: 18px;
+                            display: block;
+                            text-align: center;
+                            padding: 6px 0;
+                            border-radius: 0.25rem;
+                            position: absolute;
+                            top: 0;
+                            margin-top: 10px;
+                            opacity: 1;
+                            z-index: -1;
+                        }
+                        .room-link {
+                            display: block;
+                            width: 100%;
+                            font-size: 16px;
+                            width: 100%;
+                            line-height: 50px;
+                            border-radius: 0.25rem;
+                            padding: 6px 10px;
+                            background-color: white;
+                            color: black;
+                            border: none;
+                            text-align: left;
+                            font-weight: bold;
+                            opacity: 1;
+                        }
+                    }
+                    .myroom {
+                        display: none;
+                    }
+                }
+            }
+        }
+        #RoomRightContent {
+            width: 250px;
+            height: calc(100%);
+            background-color: $black;
+            position: absolute;
+            right: 0;
+            overflow: auto;
+            display: inline-block;
+            border-left: 2px solid white;
+            z-index: 5;
+            .RoomContent {
+                padding-left: 10px;
+                padding-right: 10px;
+                #message-form {
+                    width: 100%;
+                    background-color: white;
+                    text-align: right;
+                    input {
+                        width: 200px;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

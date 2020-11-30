@@ -1,0 +1,198 @@
+<div id = "sub-header" class = "phone"><%= render "shared/phone_room_sub_header" %></div>
+<div id = "Container">
+    <div id = "message-form">
+        <span id = "abc-btn">⚙</span>
+        <span id = "message-form-name">チャットフォーム</span>
+        <%= text_area_tag :content, nil, data: { behavior: "room_speaker" }, id: "room_form", placeholder: "200文字以内" %>
+        <span class = "phone" id = "chat-btn">↑</span>
+    </div>
+    <div id = "Modal">
+        <div id = "AddMemberContainer">
+            <span id = "add-member-close">× close</span>
+            <div id = "AddMemberContent">
+                <%= render "shared/add_member" %>
+            </div>
+        </div>
+        <div id = "RemoveMemberContainer">
+            <span id = "remove-member-close">× close</span>
+            <div id = "RemoveMemberContent">
+                <%= render "shared/remove_member" %>
+            </div>
+        </div>
+    </div>
+    <div id = "LeftSideContent">
+        <%= render "shared/room_left_content" %>
+    </div>
+    <div id = "CenterContent">
+        <%= render "shared/room" %>
+    </div>
+    <div id = "RightSideContent">
+        <%= render "shared/room_right_content" %>
+    </div>
+</div>
+
+<script>
+
+    var document_width = document.body.clientWidth;
+
+    if(document_width <= 1024) {
+        var friend = document.getElementById("sub-menu-friend");
+        var main = document.getElementById("sub-menu-main");
+        var room = document.getElementById("sub-menu-room");
+
+        var left_content = document.getElementById("LeftSideContent");
+        var center_content = document.getElementById("CenterContent");
+        var right_content = document.getElementById("RightSideContent");
+
+        $("#Container").scrollLeft(document_width);
+        friend.onclick = function(){
+            $("#Container").scrollLeft(0);
+        }
+        main.onclick = function(){
+            $("#Container").scrollLeft(document_width);
+        }
+        room.onclick = function(){
+            $("#Container").scrollLeft(document_width * 2);
+        }
+
+        $("#direct_messages").animate({scrollTop:$(".target").offset().top});
+
+        setInterval(function() {
+            var left_content_rect = left_content.getBoundingClientRect();
+            var center_content_rect = center_content.getBoundingClientRect();
+            var right_content_rect = right_content.getBoundingClientRect();
+
+            if (document_width/2 >= center_content_rect.left && center_content_rect.left >= 0 || center_content_rect.right <= document_width && center_content_rect.right > 0 ) {
+                main.style.backgroundColor = "rgb(44, 44, 44)"
+                friend.style.backgroundColor = "rgb(150, 54, 54)"
+                room.style.backgroundColor = "rgb(150, 54, 54)"
+            };
+
+            if (document_width/2 >= right_content_rect.left && right_content_rect.left >= 0) {
+                room.style.backgroundColor = "rgb(44, 44, 44)"
+                friend.style.backgroundColor = "rgb(150, 54, 54)"
+                main.style.backgroundColor = "rgb(150, 54, 54)"
+            };
+
+            if (document_width/2 <= left_content_rect.right && left_content_rect.right <= document_width ) {
+                friend.style.backgroundColor = "rgb(44, 44, 44)"
+                room.style.backgroundColor = "rgb(150, 54, 54)"
+                main.style.backgroundColor = "rgb(150, 54, 54)"
+            };
+        });
+
+        var text = document.getElementById("room_form");
+        text.outerHTML = '<input type = "text"　placeholder = "200文字以内" id = "room_form" style = "width: calc(90% - 30px); font-size: 16px; margin-left: 10px; border-radius: 30px; outline: 0px; height: 34px;">';
+
+        anime({
+          targets: ".check-false .new-light",
+          color: "rgb(100, 230, 139)"
+        });
+
+        anime({
+            targets: ".no_check",
+            color: "rgb(100, 230, 139)"
+        });
+    };
+    
+
+    if(document_width >= 1025) {
+        var form = document.getElementById("message-form");
+        var btn = document.getElementById("abc-btn");
+        var text = document.getElementById("room_form");
+        var content = document.getElementById("Container");
+        form.style.position = "absolute";
+
+        var element = document.getElementById("direct_messages");
+        element.scrollTo(0, element.scrollHeight);
+
+        anime({
+          targets: ".check-false .room-link",
+          opacity: [1,0],
+          duration: 1500,
+          direction: "alternate",
+          easing: "linear",
+          loop: true
+        });
+
+        // フォームリサイズ初期制限
+        text.style.maxHeight = (content.offsetHeight-30) + "px";
+        var content_width = content.offsetWidth;
+        var content_out_width = (document.body.clientWidth-content_width)/2
+        text.style.maxWidth = (content.offsetWidth+content_out_width) + "px";
+        
+
+        // ドラッグしたときの処理
+        btn.onmousedown = function(event) {
+            document.addEventListener("mousemove", onMouseMove);
+        };
+
+        //　付与イベント
+        var onMouseMove = function(event){
+            var x = event.clientX;
+            var y = event.clientY;
+            var width = form.offsetWidth;
+            var height = form.offsetHeight;
+            var text_area_height = text.offsetHeight;
+            var content_height = content.offsetHeight;
+            var content_width = content.offsetWidth;
+            var body_width = document.body.clientWidth;
+            var rect = form.getBoundingClientRect();
+
+            var content_out_width = (body_width-content_width)/2;
+
+            // フォームリサイズ制限（X軸)
+            text.style.maxWidth = (body_width-rect.left) + "px";
+            if(parseInt(text.style.width) >= parseInt(text.style.maxWidth)){
+                text.style.width = text.style.maxWidth;
+            }
+
+            // フォームリサイズ制限（Y軸)
+            text.style.maxHeight = (content_height+45-rect.top-30) + "px";
+            if(parseInt(text.style.height) >= parseInt(text.style.maxHeight)){
+                text.style.height = text.style.maxHeight;
+            }
+
+            // フォーラム移動（スクリーンY軸制御）
+            if((content_height+45) <= (y+15+text_area_height)){
+                form.style.top = (content_height-text_area_height-30) + "px";
+            }else if(y < 60) {
+                form.style.top = "0px"
+            }else {
+                form.style.top = (y-height/2-45) + "px";
+            };
+
+            // フォーラム移動（スクリーンX軸制御）
+            if ((body_width) <= (x+15.42)){
+                form.style.left = (body_width-width-content_out_width) + "px";
+            }else if((x-width+15.42) <= 0){
+                form.style.left = -content_out_width + "px";
+            }else{
+                form.style.left = (x-width+15-content_out_width) + "px";
+            };
+
+            // フォーラム移動（カーソルスクリーン外処理）
+            if(x < 0){
+                document.removeEventListener("mousemove",onMouseMove);
+            }else if(y <= 45){
+                document.removeEventListener("mousemove",onMouseMove);
+            }else if(x >= (body_width)){
+                document.removeEventListener("mousemove",onMouseMove);
+            }else if(y >= (content_height)){
+                document.removeEventListener("mousemove",onMouseMove);
+            };
+        };
+
+        // ドラッグした状態でフォーラムがX,Y軸限界値まで移動したときの処理
+        document.body.onclick =  function(event){
+            document.removeEventListener("mousemove",onMouseMove);
+        };
+
+        // ドロップしたときの処理
+        btn.onmouseup = function(event){
+            document.removeEventListener("mousemove",onMouseMove);
+        }
+
+    };
+    
+</script>

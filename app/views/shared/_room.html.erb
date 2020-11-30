@@ -1,0 +1,43 @@
+<div class = "RoomContent">
+    <div id = "InnerContent">
+        <div id = "InfoRoomBottom">
+            <%= link_to root_path do %><span class = "left-menu"><i class="fas fa-arrow-left"></i> Home</span><% end %>
+            <span class = "room-name"><%= @room.name %></span>
+        </div>
+        <div id = "Room">
+            <div id = "MessageContent" data-page_count = "<%= @page_count %>">
+                
+                <div id = "direct_messages" data-id = "<%= current_user.public_uid %>" data-room_id = "<%= @room.public_uid %>">
+                    <%= render @direct_messages %>
+                    <span class = "target"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on("turbolinks:load", function(){
+        var i = 2;
+        var total_page = $("#MessageContent").data("page_count");
+        var message_canvas = document.getElementById("direct_messages");
+        
+        $("#direct_messages").scroll(function(){
+            if(($("#direct_messages").scrollTop() == 0) && (i <= Number(total_page))){
+                var message_content_scroll = message_canvas.scrollHeight;
+                $.ajax({
+                    url: `?page=${i}`
+                }).done(function(data) {
+                    $("#direct_messages").prepend($(data).find("#direct_messages").html());
+                    $("#direct_messages").scrollTop(message_canvas.scrollHeight - message_content_scroll);
+                    i++;
+                });
+            }
+        });
+    });
+</script>
+
+
+
+
+

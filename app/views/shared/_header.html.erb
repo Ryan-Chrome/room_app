@@ -1,0 +1,11 @@
+<header>
+    <div id = "leftMenu" class = "phone">
+        <span><%= link_to root_path, "data-turbolinks": false do %><i class="fas fa-home"></i><% end %></span>
+    </div>
+    <span><%= link_to "ROOM", root_path, id: "Logo", "data-turbolinks": false %></span>
+    <div id = "Menu">
+        <% if user_signed_in? %>
+            <span><%= link_to destroy_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt"></i><% end %></span>
+        <% end %>
+    </div>
+</header>

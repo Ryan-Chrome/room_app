@@ -1,0 +1,19 @@
+<div class = "RoomContent">
+    <ul id = "group-list">
+        <li id = "room-list-head">ROOM</li>
+        <% @entryRoom.each do |entry| %>
+            <% if entry.room != @room %>
+                <%= link_to entry_path(entry), method: :put do %>
+                    <li id = "group-<%= entry.room.public_uid %>" class = "group chack-<%= entry.check %>">
+                        <span class = "room-link"><%= entry.room.name %></span>
+                        <span class = "new">New!</span>
+                        <span class = "new-light phone">⚫︎</span>
+                    </li>
+                <% end %>
+            <% else %>
+                <li id = "group-<%= entry.room.public_uid %>" class = "group myroom" data-room_id = "<%= entry.room.public_uid %>"></li>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
+

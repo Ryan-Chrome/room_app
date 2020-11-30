@@ -1,0 +1,100 @@
+<span class = "head">ルームメンバー <span id = "RemoveMemberContainerBtn">⚙</span></span>
+<span id = "AddMemberContainerBtn">＋ ルームメンバー追加</span>
+<% @room_member.each do |user| %>
+    <li class = "room-member">
+        <% if user.image.attached? %>
+            <%= image_tag user.image %>
+        <% else %>
+            <%= image_tag "no_image.png" %>
+        <% end %>
+        <%= user.name %>
+    </li>
+<% end %>
+
+<script>
+    var document_width = document.body.clientWidth;
+    var modal = document.getElementById("Modal");
+    var add_member_container = document.getElementById("AddMemberContainer");
+    var add_member_container_btn = document.getElementById("AddMemberContainerBtn");
+    var add_member_close_btn = document.getElementById("add-member-close");
+
+    var remove_member_container = document.getElementById("RemoveMemberContainer");
+    var remove_member_container_btn = document.getElementById("RemoveMemberContainerBtn");
+    var remove_member_close_btn = document.getElementById("remove-member-close");
+
+    var member_list = document.getElementById("MemberList");
+    var member_config_btn = document.getElementById("room-member-config");
+    var member_config_close_btn = document.getElementById("room-member-config-close");
+    var member_out_link = document.getElementsByClassName("member-out-link");
+
+    if(document_width <= 1024){
+        add_member_container_btn.onclick = function() {
+            modal.style.display = "block";
+            add_member_container.style.display = "block";
+        };
+        add_member_close_btn.onclick = function() {
+            modal.style.display = "none";
+            add_member_container.style.display = "none";
+        };
+
+        remove_member_container_btn.onclick = function() {
+            modal.style.display = "block";
+            remove_member_container.style.display = "block";
+        };
+        remove_member_close_btn.onclick = function() {
+            modal.style.display = "none";
+            remove_member_container.style.display = "none";
+        };
+    }
+
+    if(document_width >= 1025){
+        add_member_container_btn.onclick = function() {
+            modal.style.display = "block";
+            add_member_container.style.display = "block";
+            var tl = anime.timeline({});
+            tl.add({
+                targets: "#AddMemberContainer",
+                height: [0,600],
+                easing: "linear",
+                duration: 200
+            }).add({
+                targets: "#AddMemberContent",
+                opacity: [0,1],
+                duration: 1000
+            });
+        };
+        add_member_close_btn.onclick = function() {
+            modal.style.display = "none";
+            add_member_container.style.display = "none";
+            anime({
+                targets: "#AddMemberContent",
+                opacity: [1,0]
+            });
+        };
+
+        remove_member_container_btn.onclick = function() {
+            modal.style.display = "block";
+            remove_member_container.style.display = "block";
+            var tl = anime.timeline({});
+            tl.add({
+                targets: "#RemoveMemberContainer",
+                height: [0,600],
+                easing: "linear",
+                duration: 200
+            }).add({
+                targets: "#RemoveMemberContent",
+                opacity: [0,1],
+                duration: 1000
+            });
+        };
+        remove_member_close_btn.onclick = function() {
+            modal.style.display = "none";
+            remove_member_container.style.display = "none";
+            anime({
+                targets: "RemoveMemberContant",
+                opacity: [1,0]
+            });
+        };
+    }
+
+</script>
