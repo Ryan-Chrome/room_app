@@ -1,24 +1,12 @@
-# README
+## リアルタイムチャットアプリ 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+action_cable使用
+devise使用
 
-Things you may want to cover:
+## 概要
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+1人のユーザーがチャットルームを作りそこへフレンドであるユーザーを招待するという方式。
+招待されたフレンドが自分のフレンドを招待することも可能。
+チャットはリアルタイム更新されホーム画面にいてもチャットルームにいても自分の持つ他のチャットルームで発言があればリアルタイムで通知される。ログアウト中に自分の持つルームで発言があった場合もログインすればもちろん通知される。
+```

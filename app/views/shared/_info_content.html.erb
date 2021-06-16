@@ -1,17 +1,15 @@
 <span id = "notice"><%= "Info: #{flash[:notice]}" if flash[:notice].present? %></span>
-
 <script>
-    var notice = document.getElementById("notice");
-    notice.style.display = "block";
-    notice.style.margin = "0";
-    var notice_content = document.getElementById("notice-content")
-    var notice_content_width = notice_content.offsetWidth;
-
-    anime({
-        targets: "#notice",
-        duration: 500,
-        delay: 5000,
-        easing: "linear",
-        translateX: [0, notice_content_width]
-    });
+  var notice = document.getElementById("notice");
+  notice.style.display = "block";
+  notice.style.margin = "0";
+  var notice_content = document.getElementById("notice-content")
+  var notice_content_width = notice_content.offsetWidth;
+  anime({
+    targets: "#notice",
+    duration: 500,
+    delay: 5000,
+    easing: "linear",
+    translateX: [0, notice_content_width]
+  });
 </script>

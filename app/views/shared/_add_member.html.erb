@@ -1,19 +1,19 @@
 <ul>
-    <% @friends.each do |friend| %>
-        <% unless @room_member.include?(friend) %>
-            <li>
-                <% if friend.image.attached? %>
-                    <%= image_tag friend.image %>
-                <% else %>
-                    <%= image_tag "no_image.png" %>
-                <% end %>
-                <span><%= friend.name %></span>
-                <%= form_with(model: @room.entries.build, remote: true) do |f| %>
-                    <div><%= hidden_field_tag :user_id, friend.public_uid, id: "#{friend.public_uid}"%></div>
-                    <div><%= hidden_field_tag :room_id, @room.public_uid, id: "room_id_#{friend.public_uid}"  %></div>
-                    <%= f.submit "追加", class: "btn btn-primary" %>
-                <% end %>
-            </li>
+  <% @friends.each do |friend| %>
+    <% unless @room_member.include?(friend) %>
+      <li>
+        <% if friend.image.attached? %>
+          <%= image_tag friend.image %>
+        <% else %>
+          <%= image_tag "no_image.png" %>
         <% end %>
+        <span><%= friend.name %></span>
+        <%= form_with(model: @room.entries.build, remote: true) do |f| %>
+          <div><%= hidden_field_tag :user_id, friend.public_uid, id: "#{friend.public_uid}"%></div>
+          <div><%= hidden_field_tag :room_id, @room.public_uid, id: "room_id_#{friend.public_uid}"  %></div>
+          <%= f.submit "追加", class: "btn btn-primary" %>
+        <% end %>
+      </li>
     <% end %>
+  <% end %>
 </ul>

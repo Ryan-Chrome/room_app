@@ -1,16 +1,16 @@
 <div class = "RoomContent">
-    <h5 id = "RoomCreateBtn">New-ROOM</h5>
-    <ul id = "group-list">
-        <li id = "room-list-head">ROOM</li>
-        <% @entryRoom.each do |entry| %>
-            <%= link_to entry_path(entry), method: :put do %>
-                <li id = "group-<%= entry.room.public_uid %>" class = "group check-<%= entry.check %>">
-                    <span class = "room-link"><%= entry.room.name %></span>
-                    <span class = "new">New!</span>
-                    <span class = "new-light phone">⚫︎</span>
-                </li>
-            <% end %>
-        <% end %>
-    </ul>
+  <h5 id = "RoomCreateBtn">New-ROOM</h5>
+  <ul id = "group-list">
+    <li id = "room-list-head">ROOM</li>
+    <% @entryRoom.each do |entry| %>
+      <%= link_to entry_path(entry), method: :put do %>
+        <li id = "group-<%= entry.room.public_uid %>" class = "group check-<%= entry.check %>">
+          <span class = "room-link"><%= entry.room.name %></span>
+          <span class = "new">New!</span>
+          <span class = "new-light phone">⚫︎</span>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 </div>
 

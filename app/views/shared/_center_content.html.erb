@@ -1,26 +1,26 @@
 <div class = "HomeContent">
-    <div id = "InfoContainer">
-        <div id = "InfoInner">
-            <span id = "notice-content">
-                <%= render 'shared/info_content' %>
-            </span>
-        </div>
+  <div id = "InfoContainer">
+    <div id = "InfoInner">
+      <span id = "notice-content">
+        <%= render 'shared/info_content' %>
+      </span>
     </div>
-    <div id = "InnerContent">
-        <div id = "InfoRoomBottom">
-            <span class = "room-name">HOME</span>
-        </div>
-        <div id = "UserShow">
-            <div id = "UserContent">
-                <% if current_user.image.attached? %>
-                    <%= image_tag current_user.image %>
-                <% else %>
-                    <%= image_tag "no_image.png" %>
-                <% end %>
-                <span><%= current_user.name %></span>
-                <span>ID： <%= current_user.public_uid %></span>
-                <%= link_to "↪️ Edit", edit_user_registration_path(current_user) %>
-            </div>
-        </div>
+  </div>
+  <div id = "InnerContent">
+    <div id = "InfoRoomBottom">
+      <span class = "room-name">HOME</span>
     </div>
+    <div id = "UserShow">
+      <div id = "UserContent">
+        <% if current_user.image.attached? %>
+          <%= image_tag current_user.image %>
+        <% else %>
+          <%= image_tag "no_image.png" %>
+        <% end %>
+        <span><%= current_user.name %></span>
+        <span>ID： <%= current_user.public_uid %></span>
+        <%= link_to "↪️ Edit", edit_user_registration_path(current_user) %>
+      </div>
+    </div>
+  </div>
 </div>

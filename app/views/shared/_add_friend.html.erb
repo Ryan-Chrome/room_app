@@ -1,233 +1,217 @@
 <% if params[:search].present? && @follow_user && @follow_user != current_user %>  
-    <div id = "AddFriendContent">
-        <span id = "add-friend-back-btn">← back</span>
-        <span id = "add-friend-modal-close">× close</span>
-        <div id = "AddFriendUser">
-            <% if @follow_user.image.attached? %>
-                <%= image_tag @follow_user.image, id: "add-friend-image" %>
-            <% else %>
-                <%= image_tag "no_image.png", id: "add-friend-image" %>
-            <% end %>
-            <span><%= @follow_user.name %></span>
-        </div>
-        <div id = "AddFriendForm">
-            <% if current_user.friend?(@follow_user) %>
-                <span>すでにフレンドです</span>
-            <% elsif current_user.request?(@follow_user) %>
-                <span>フレンド申請中です</span>
-            <% elsif current_user.approval?(@follow_user) %>
-                <span class = "add-friend-form-span">フレンド申請されています</span>
-                <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
-                    <div><%= hidden_field_tag :follow_id, @follow_user.public_uid %></div>
-                    <%= f.submit "承認", class: "btn btn-primary", id: "add-friend-btn" %>
-                <% end %>
-            <% else %>
-                <span class = "add-friend-form-span">フレンド申請しますか？</span>
-                <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
-                    <div><%= hidden_field_tag :follow_id, @follow_user.public_uid %></div>
-                    <%= f.submit "申請", class: "btn btn-primary", id: "add-friend-btn" %>
-                <% end %>
-            <% end %>
-        </div>
+  <div id = "AddFriendContent">
+    <span id = "add-friend-back-btn">← back</span>
+    <span id = "add-friend-modal-close">× close</span>
+    <div id = "AddFriendUser">
+      <% if @follow_user.image.attached? %>
+        <%= image_tag @follow_user.image, id: "add-friend-image" %>
+      <% else %>
+        <%= image_tag "no_image.png", id: "add-friend-image" %>
+      <% end %>
+      <span><%= @follow_user.name %></span>
     </div>
+    <div id = "AddFriendForm">
+      <% if current_user.friend?(@follow_user) %>
+        <span>すでにフレンドです</span>
+      <% elsif current_user.request?(@follow_user) %>
+        <span>フレンド申請中です</span>
+      <% elsif current_user.approval?(@follow_user) %>
+        <span class = "add-friend-form-span">フレンド申請されています</span>
+        <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
+          <div><%= hidden_field_tag :follow_id, @follow_user.public_uid %></div>
+          <%= f.submit "承認", class: "btn btn-primary", id: "add-friend-btn" %>
+        <% end %>
+      <% else %>
+        <span class = "add-friend-form-span">フレンド申請しますか？</span>
+        <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
+          <div><%= hidden_field_tag :follow_id, @follow_user.public_uid %></div>
+          <%= f.submit "申請", class: "btn btn-primary", id: "add-friend-btn" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% elsif params[:request_user].present? && current_user.request?(@other_user) %>
-    <div id = "AddFriendContent">
-        <span id = "add-friend-modal-close">× close</span>
-        <div id = "AddFriendUser">
-            <% if @other_user.image.attached? %>
-                <%= image_tag @other_user.image, id: "add-friend-image" %>
-            <% else %>
-                <%= image_tag "no_image.png", id: "add-friend-image" %>
-            <% end %>
-            <span><%= @other_user.name %></span>
-        </div>
-        <div id = "AddFriendForm">
-            <span class = "add-friend-form-span">フレンド申請中です</span>
-            <%= form_with(model: current_user.relationships.find_by(follow_id: @other_user.id), html: {method: :delete}, remote: true) do |f| %>
-                <%= f.submit "申請取り消し", class: "btn btn-primary", id: "add-friend-btn" %>
-            <% end %>
-        </div>
+  <div id = "AddFriendContent">
+    <span id = "add-friend-modal-close">× close</span>
+    <div id = "AddFriendUser">
+      <% if @other_user.image.attached? %>
+        <%= image_tag @other_user.image, id: "add-friend-image" %>
+      <% else %>
+        <%= image_tag "no_image.png", id: "add-friend-image" %>
+      <% end %>
+      <span><%= @other_user.name %></span>
     </div>
+    <div id = "AddFriendForm">
+      <span class = "add-friend-form-span">フレンド申請中です</span>
+      <%= form_with(model: current_user.relationships.find_by(follow_id: @other_user.id), html: {method: :delete}, remote: true) do |f| %>
+        <%= f.submit "申請取り消し", class: "btn btn-primary", id: "add-friend-btn" %>
+      <% end %>
+    </div>
+  </div>
 <% elsif params[:approval_user].present? && current_user.approval?(@other_user) %>
-    <div id = "AddFriendContent">
-        <span id = "add-friend-modal-close">× close</span>
-        <div id = "AddFriendUser">
-            <% if @other_user.image.attached? %>
-                <%= image_tag @other_user.image, id: "add-friend-image" %>
-            <% else %>
-                <%= image_tag "no_image.png", id: "add-friend-image" %>
-            <% end %>
-            <span><%= @other_user.name %></span>
-        </div>
-        <div id = "AddFriendForm">
-            <span class = "add-friend-form-span">フレンド申請されています</span>
-            <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
-                <div><%= hidden_field_tag :follow_id, @other_user.public_uid %></div>
-                <%= f.submit "承認", class: "btn btn-primary", id: "add-friend-ok-btn" %>
-            <% end %>
-            <%= form_with(model: @other_user.relationships.find_by(follow_id: current_user.id), html: {method: :delete}, remote: true) do |s| %>
-                <%= s.submit "拒否", class: "btn btn-primary", id: "add-friend-no-btn" %>
-            <% end %>
-        </div>
+  <div id = "AddFriendContent">
+    <span id = "add-friend-modal-close">× close</span>
+    <div id = "AddFriendUser">
+      <% if @other_user.image.attached? %>
+        <%= image_tag @other_user.image, id: "add-friend-image" %>
+      <% else %>
+        <%= image_tag "no_image.png", id: "add-friend-image" %>
+      <% end %>
+      <span><%= @other_user.name %></span>
     </div>
+    <div id = "AddFriendForm">
+      <span class = "add-friend-form-span">フレンド申請されています</span>
+      <%= form_with(model: current_user.relationships.build, remote: true) do |f| %>
+        <div><%= hidden_field_tag :follow_id, @other_user.public_uid %></div>
+        <%= f.submit "承認", class: "btn btn-primary", id: "add-friend-ok-btn" %>
+      <% end %>
+      <%= form_with(model: @other_user.relationships.find_by(follow_id: current_user.id), html: {method: :delete}, remote: true) do |s| %>
+        <%= s.submit "拒否", class: "btn btn-primary", id: "add-friend-no-btn" %>
+      <% end %>
+    </div>
+  </div>
 <% elsif params[:friend_user].present? && current_user.friend?(@other_user) %>
-    <div id = "AddFriendContent">
-        <span id = "add-friend-modal-close">× close</span>
-        <div id = "AddFriendUser">
-            <% if @other_user.image.attached? %>
-                <%= image_tag @other_user.image, id: "add-friend-image" %>
-            <% else %>
-                <%= image_tag "no_image.png", id: "add-friend-image" %>
-            <% end %>
-            <span><%= @other_user.name %></span>
-        </div>
-        <div id = "AddFriendForm">
-            <%= form_with(model: current_user.relationships.find_by(follow_id: @other_user.id), html: {method: :delete}, remote: true) do |f| %>
-                <%= f.submit "フレンド解除", class: "btn btn-primary", id: "add-friend-btn" %>
-            <% end %>
-        </div>
+  <div id = "AddFriendContent">
+    <span id = "add-friend-modal-close">× close</span>
+    <div id = "AddFriendUser">
+      <% if @other_user.image.attached? %>
+        <%= image_tag @other_user.image, id: "add-friend-image" %>
+      <% else %>
+        <%= image_tag "no_image.png", id: "add-friend-image" %>
+      <% end %>
+      <span><%= @other_user.name %></span>
     </div>
+    <div id = "AddFriendForm">
+      <%= form_with(model: current_user.relationships.find_by(follow_id: @other_user.id), html: {method: :delete}, remote: true) do |f| %>
+        <%= f.submit "フレンド解除", class: "btn btn-primary", id: "add-friend-btn" %>
+      <% end %>
+    </div>
+  </div>
 <% else %>
-    <div id = "AddFriendContent">
-        <span id = "add-friend-modal-close">× close</span>
-        <span class = "add-friend-not-user">ユーザーが存在しません</span>
-        <span id = "add-not-friend-back-btn">← back</span>
-    </div>
+  <div id = "AddFriendContent">
+    <span id = "add-friend-modal-close">× close</span>
+    <span class = "add-friend-not-user">ユーザーが存在しません</span>
+    <span id = "add-not-friend-back-btn">← back</span>
+  </div>
 <% end %>
-
 <script>
-    var document_width = document.body.clientWidth;
-    var friend_add_close_btn = document.getElementById("add-friend-modal-close");
-    var modal = document.getElementById("Modal");
-    var add_friend_container = document.getElementById("AddFriendContainer");
-    var add_friend_btn = document.getElementById("add-friend-btn");
-    var add_friend_no_btn = document.getElementById("add-friend-no-btn");
-    var add_friend_ok_btn = document.getElementById("add-friend-ok-btn");
-    var add_friend_back_btn = document.getElementById("add-friend-back-btn");
-    var add_not_friend_back_btn = document.getElementById("add-not-friend-back-btn");
-
-    if(document_width <= 1024){
-        if(friend_add_close_btn) {
-            friend_add_close_btn.onclick = function(){
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            };
-        };
-        
-        if(add_friend_btn) {
-            add_friend_btn.onclick = function(){
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            };
-        };
-
-        if(add_friend_no_btn) {
-            add_friend_no_btn.onclick = function() {
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            }
-        }
-
-        if(add_friend_ok_btn) {
-            add_friend_ok_btn.onclick = function() {
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            }
-        }
-
-        if(add_friend_back_btn) {
-            add_friend_back_btn.onclick = function() {
-                add_friend_container.style.display = "none";
-                friend_create_inner.style.display = "block";
-            };
-        };
-
-        if(add_not_friend_back_btn) {
-            add_not_friend_back_btn.onclick = function() {
-                add_friend_container.style.display = "none";
-                friend_create_inner.style.display = "block";
-            };
-        };
+  var document_width = document.body.clientWidth;
+  var friend_add_close_btn = document.getElementById("add-friend-modal-close");
+  var modal = document.getElementById("Modal");
+  var add_friend_container = document.getElementById("AddFriendContainer");
+  var add_friend_btn = document.getElementById("add-friend-btn");
+  var add_friend_no_btn = document.getElementById("add-friend-no-btn");
+  var add_friend_ok_btn = document.getElementById("add-friend-ok-btn");
+  var add_friend_back_btn = document.getElementById("add-friend-back-btn");
+  var add_not_friend_back_btn = document.getElementById("add-not-friend-back-btn");
+  if(document_width <= 1024){
+    if(friend_add_close_btn) {
+      friend_add_close_btn.onclick = function(){
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      };
+    };      
+    if(add_friend_btn) {
+      add_friend_btn.onclick = function(){
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      };
     };
-
-    if(document_width >= 1025){
-        if(friend_add_close_btn) {
-            friend_add_close_btn.onclick = function(){
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            };
-        };
-        
-        if(add_friend_btn) {
-            add_friend_btn.onclick = function(){
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            };
-        };
-
-        if(add_friend_no_btn) {
-            add_friend_no_btn.onclick = function() {
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            }
-        }
-
-        if(add_friend_ok_btn) {
-            add_friend_ok_btn.onclick = function() {
-                modal.style.display = "none";
-                add_friend_container.style.display = "none";
-            }
-        }
-
-        if(add_friend_back_btn) {
-            add_friend_back_btn.onclick = function() {
-                add_friend_container.style.display = "none";
-                friend_create_inner.style.display = "block";
-                var tl = anime.timeline({});
-                tl.add({
-                    targets: "#FriendCreate",
-                    height: [0,250],
-                    easing: "linear",
-                    duration: 200
-                }).add({
-                    targets: "#FriendSearchForm",
-                    opacity: [0,1],
-                    duration: 1000
-                }).add({
-                    targets: "#FriendCreateHead",
-                    translateY: [-1000,0],
-                    translateZ: 0,
-                    rotate: [0, -15],
-                    easing: "spring(1, 80, 13, 0)",
-                    
-                }, 100);
-            };
-        };
-
-        if(add_not_friend_back_btn) {
-            add_not_friend_back_btn.onclick = function() {
-                add_friend_container.style.display = "none";
-                friend_create_inner.style.display = "block";
-                var tl = anime.timeline({});
-                tl.add({
-                    targets: "#FriendCreate",
-                    height: [0,250],
-                    easing: "linear",
-                    duration: 200
-                }).add({
-                    targets: "#FriendSearchForm",
-                    opacity: [0,1],
-                    duration: 1000
-                }).add({
-                    targets: "#FriendCreateHead",
-                    translateY: [-1000,0],
-                    translateZ: 0,
-                    rotate: [0, -15],
-                    easing: "spring(1, 80, 13, 0)",
-                    
-                }, 100);
-            };
-        };
+    if(add_friend_no_btn) {
+      add_friend_no_btn.onclick = function() {
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      }
+    }
+    if(add_friend_ok_btn) {
+      add_friend_ok_btn.onclick = function() {
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      }
+    }
+    if(add_friend_back_btn) {
+      add_friend_back_btn.onclick = function() {
+        add_friend_container.style.display = "none";
+        friend_create_inner.style.display = "block";
+      };
     };
-    
+    if(add_not_friend_back_btn) {
+      add_not_friend_back_btn.onclick = function() {
+        add_friend_container.style.display = "none";
+        friend_create_inner.style.display = "block";
+      };
+    };
+  };
+  if(document_width >= 1025){
+    if(friend_add_close_btn) {
+      friend_add_close_btn.onclick = function(){
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      };
+    };     
+    if(add_friend_btn) {
+      add_friend_btn.onclick = function(){
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      };
+    };
+    if(add_friend_no_btn) {
+      add_friend_no_btn.onclick = function() {
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      }
+    }
+    if(add_friend_ok_btn) {
+      add_friend_ok_btn.onclick = function() {
+        modal.style.display = "none";
+        add_friend_container.style.display = "none";
+      }
+    }
+    if(add_friend_back_btn) {
+      add_friend_back_btn.onclick = function() {
+        add_friend_container.style.display = "none";
+        friend_create_inner.style.display = "block";
+        var tl = anime.timeline({});
+        tl.add({
+          targets: "#FriendCreate",
+          height: [0,250],
+          easing: "linear",
+          duration: 200
+        }).add({
+          targets: "#FriendSearchForm",
+          opacity: [0,1],
+          duration: 1000
+        }).add({
+          targets: "#FriendCreateHead",
+          translateY: [-1000,0],
+          translateZ: 0,
+          rotate: [0, -15],
+          easing: "spring(1, 80, 13, 0)",
+        }, 100);
+      };
+    };
+    if(add_not_friend_back_btn) {
+      add_not_friend_back_btn.onclick = function() {
+        add_friend_container.style.display = "none";
+        friend_create_inner.style.display = "block";
+        var tl = anime.timeline({});
+        tl.add({
+          targets: "#FriendCreate",
+          height: [0,250],
+          easing: "linear",
+          duration: 200
+        }).add({
+          targets: "#FriendSearchForm",
+          opacity: [0,1],
+          duration: 1000
+        }).add({
+          targets: "#FriendCreateHead",
+          translateY: [-1000,0],
+          translateZ: 0,
+          rotate: [0, -15],
+          easing: "spring(1, 80, 13, 0)",  
+        }, 100);
+      };
+    };
+  };
 </script>

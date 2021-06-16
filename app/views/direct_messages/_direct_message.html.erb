@@ -1,28 +1,28 @@
 <div class = "user-message" id = "<%= direct_message.id %>">
-    <div class = "user-content">
-        <% if direct_message.user.image.attached? %>
-            <%= image_tag (rails_blob_path(direct_message.user.image)) %>
-        <% else %>
-            <%= image_tag "no_image.png" %>
-        <% end %>
-        <span class = "user-name"><%= direct_message.user.name %></span>
-    </div>
-    <p class = "message-content">
-        <%= direct_message.content %>
-    </p>
-    <span class = "message-time" ><%= direct_message.created_at.to_s(:datetime) %></span>
+  <div class = "user-content">
+    <% if direct_message.user.image.attached? %>
+      <%= image_tag (rails_blob_path(direct_message.user.image)) %>
+    <% else %>
+      <%= image_tag "no_image.png" %>
+    <% end %>
+    <span class = "user-name"><%= direct_message.user.name %></span>
+  </div>
+  <p class = "message-content">
+    <%= direct_message.content %>
+  </p>
+  <span class = "message-time" ><%= direct_message.created_at.to_s(:datetime) %></span>
 </div>
 
 <script>
-    var current_user_data = document.getElementById("direct_messages");
-    var message_id = <%= direct_message.id %>;
-    var message_user = <%= direct_message.user.public_uid %>
-    var current_user = current_user_data.getAttribute("data-id");
-    var message = document.getElementById(message_id);
+  var current_user_data = document.getElementById("direct_messages");
+  var message_id = <%= direct_message.id %>;
+  var message_user = <%= direct_message.user.public_uid %>
+  var current_user = current_user_data.getAttribute("data-id");
+  var message = document.getElementById(message_id);
 
-    if (current_user == message_user){
-        message.classList.add("current_user_message");
-    }else {
-        message.classList.add("other_user_message");
-    };
+  if (current_user == message_user){
+    message.classList.add("current_user_message");
+  }else {
+    message.classList.add("other_user_message");
+  };
 </script>
